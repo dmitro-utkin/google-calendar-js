@@ -1,53 +1,53 @@
 // стили сетки календаря и заголовка календаря с днями недели
 
 .calendar {
+  margin-left: 20px;
+
   &__header {
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px;
+    margin-right: 0;
     width: auto;
     background: #fff;
+  }
 
-    &-days {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      list-style: none;
+  &__day-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
 
-      .day {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 5px;
-        cursor: pointer;
-        text-align: center;
+    .day-label__day-name {
+      margin-bottom: 30px;
+    }
 
-        &.active {
-          color: #4285F4;
-        }
-
-        &.active .calendar__header-daysnumber {
-            background-color: #4285F4;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            text-align: center;
-            font-size: 40px;
-        }
-      }
-
-      .calendar__header-daysnumber {
-        background-color: transparent;
-        width: 40px;
-        height: 40px;
-        font-size: 40px;
-        line-height: 40px;
-      }
-      
-      .calendar__header-daysnumber.blue-bg {
-        background-color: blue;
-        color: white;
-      }
+    .day-label__day-number {
+      font-size: 24px;
     }
   }
 }
+
+// .calendar {
+//   margin-left: 20px;
+
+//   &__header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     margin: auto;
+//     width: auto;
+//     background: #fff;
+//   }
+
+//   .calendar__day-label {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+    
+//     &__day-name {
+//       text-transform: uppercase;
+//     }
+//   }
+// }

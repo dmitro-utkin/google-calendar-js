@@ -118,48 +118,29 @@
   margin-left: 30px;
 }
 
+.calendar {
+  margin-left: 20px;
+}
 .calendar__header {
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px;
+  margin-right: 0;
   width: auto;
   background: #fff;
 }
-.calendar__header-days {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-}
-.calendar__header-days .day {
+.calendar__day-label {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 0 5px;
-  cursor: pointer;
-  text-align: center;
+  align-items: center;
+  text-transform: uppercase;
 }
-.calendar__header-days .day.active {
-  color: #4285F4;
+.calendar__day-label .day-label__day-name {
+  margin-bottom: 30px;
 }
-.calendar__header-days .day.active .calendar__header-daysnumber {
-  background-color: #4285F4;
-  color: white;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  font-size: 40px;
-}
-.calendar__header-days .calendar__header-daysnumber {
-  background-color: transparent;
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
-  line-height: 40px;
-}
-.calendar__header-days .calendar__header-daysnumber.blue-bg {
-  background-color: blue;
-  color: white;
+.calendar__day-label .day-label__day-number {
+  font-size: 24px;
 }
 
 * {
