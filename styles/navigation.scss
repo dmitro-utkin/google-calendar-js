@@ -1,8 +1,13 @@
 // стили навигации
 .header {
-  width: 100vw;
   display: flex;
   margin: 20px 0 10px 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #ffffff;
 }
 
 .create-event-btn {
