@@ -1,6 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+}
+
 .page {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -61,11 +68,12 @@
 
 .header {
   display: flex;
-  margin: 20px 0 10px 50px;
+  gap: 50px;
+  padding: 20px 0 10px 50px;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   z-index: 100;
   background: #ffffff;
 }
@@ -147,6 +155,7 @@
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
+  margin-left: 80px;
 }
 .calendar__day-label .day-label__day-name {
   margin-bottom: 30px;
@@ -178,18 +187,9 @@
 }
 .calendar__week-container .calendar__day {
   width: 100vw;
-  height: 60px;
+  min-height: 60px;
   background-color: aqua;
   border: 1px solid black;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
 }
 
 /*# sourceMappingURL=styles.css.map */

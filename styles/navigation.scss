@@ -1,11 +1,12 @@
 // стили навигации
 .header {
   display: flex;
-  margin: 20px 0 10px 50px;
+  gap: 50px;
+  padding: 20px 0 10px 50px;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   z-index: 100;
   background: #ffffff;
 }
