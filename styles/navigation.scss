@@ -2,11 +2,11 @@
 .header {
   display: flex;
   gap: 50px;
-  padding: 20px 0 10px 50px;
+  padding: 20px 10px 10px 50px;
   position: fixed;
   top: 0;
   left: 0;
-  width: auto;
+  width: 100%;
   z-index: 100;
   background: #ffffff;
 }

@@ -8,6 +8,9 @@ body {
 }
 
 .page {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -69,11 +72,11 @@ body {
 .header {
   display: flex;
   gap: 50px;
-  padding: 20px 0 10px 50px;
+  padding: 20px 10px 10px 50px;
   position: fixed;
   top: 0;
   left: 0;
-  width: auto;
+  width: 100%;
   z-index: 100;
   background: #ffffff;
 }
@@ -134,28 +137,28 @@ body {
   display: inline;
   margin-left: 20px;
   padding-top: 80px;
+  padding-right: 10px;
+}
+.calendar__body {
+  width: calc(100% - 18px);
 }
 .calendar__time-label {
   display: inline;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   top: 145px;
   left: 7px;
 }
 .calendar__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-right: 0;
-  width: auto;
-  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(7, 14.2857142857%);
+  width: calc(100% - 18px);
 }
 .calendar__day-label {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
-  margin-left: 80px;
 }
 .calendar__day-label .day-label__day-name {
   margin-bottom: 30px;
@@ -164,32 +167,44 @@ body {
   font-size: 24px;
 }
 
+.calendar__week {
+  display: flex;
+  width: 97%;
+  height: 100%;
+}
+.calendar__week .calendar__day {
+  display: grid;
+  grid-template-rows: repeat(24, 60px);
+  width: 100vw;
+}
+.calendar__week .calendar__day .calendar__time-slot {
+  grid-template-rows: repeat(24, 60px);
+  border: 1px solid #ccc;
+  border-right: none;
+  border-top: none;
+}
+.calendar__week .calendar__day .calendar__time-slot:first-child {
+  border-top: 1px solid #ccc;
+}
+.calendar__week .calendar__day:last-child {
+  border-right: 1px solid #ccc;
+}
+
 .calendar__week-container {
   display: flex;
 }
-.calendar__week-container__time-scale {
+.calendar__week-container .calendar__time-scale {
   display: flex;
   flex-direction: column;
+  padding-top: 8px;
 }
 .calendar__week-container .time-slot {
-  width: 48px;
   height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   font-size: 12px;
-}
-.calendar__week-container .calendar__week {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-.calendar__week-container .calendar__day {
-  width: 100vw;
-  min-height: 60px;
-  background-color: aqua;
-  border: 1px solid black;
 }
 
 /*# sourceMappingURL=styles.css.map */
