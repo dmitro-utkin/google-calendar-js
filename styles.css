@@ -139,32 +139,34 @@ body {
   padding-top: 80px;
   padding-right: 10px;
 }
-.calendar__body {
-  width: calc(100% - 18px);
-}
 .calendar__time-label {
   display: inline;
   font-size: 10px;
   position: absolute;
-  top: 145px;
+  top: 180px;
   left: 7px;
 }
 .calendar__header {
   display: grid;
   grid-template-columns: repeat(7, 14.2857142857%);
-  width: calc(100% - 18px);
+  width: calc(100% - 50px);
+  margin-left: 30px;
 }
 .calendar__day-label {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
+  margin: 20px auto;
 }
 .calendar__day-label .day-label__day-name {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .calendar__day-label .day-label__day-number {
   font-size: 24px;
+}
+.calendar__body {
+  width: calc(100% - 18px);
 }
 
 .calendar__week {
