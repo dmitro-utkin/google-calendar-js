@@ -53,7 +53,7 @@
     width: 100vw;
     
     .calendar__time-slot {
-      grid-template-rows: repeat(24, 60px);
+      grid-template-rows: repeat(23, 60px);
       border: 1px solid #ccc;
       border-right: none;
       border-top: none;

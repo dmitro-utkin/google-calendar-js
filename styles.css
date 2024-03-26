@@ -194,7 +194,7 @@ body {
   width: 100vw;
 }
 .calendar__week .calendar__day .calendar__time-slot {
-  grid-template-rows: repeat(24, 60px);
+  grid-template-rows: repeat(23, 60px);
   border: 1px solid #ccc;
   border-right: none;
   border-top: none;
@@ -214,6 +214,7 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
+  padding-right: 8px;
 }
 .calendar__week-container .time-slot {
   height: 60px;
