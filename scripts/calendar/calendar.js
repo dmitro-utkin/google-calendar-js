@@ -16,17 +16,18 @@ import { createNumbersArray } from '../common/createNumbersArray.js';
 //   // после того, как отрисовали всю сетку для отображаемой недели, нужно отобразить события этой недели с помощью renderEvents
 // };
 
-// const generateDay = (day) => {
-//   let dayHTML = `<div class="calendar__day" data-day="${day}">`;
-//   for(let i = 0; i < 24; i++) {
-//       dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
-//   }
-//   dayHTML += '</div>';
-//   return dayHTML;
-// };
+const generateDay = (day) => {
+  let dayHTML = `<div class="calendar__day" data-day="${day}">`;
+  for(let i = 0; i < 24; i++) {
+      dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
+  }
+  dayHTML += '</div>';
+  return dayHTML;
+};
 
 export const renderWeek = () => {
   let weekHTML = '';
+  const displayedWeekStart = getItem('displayedWeekStart'); // Отримуємо displayedWeekStart з storage
   const weekDays = generateWeekRange(displayedWeekStart); // Припустимо, що generateWeekRange повертає масив днів тижня
   weekDays.forEach(day => {
       weekHTML += generateDay(day);
