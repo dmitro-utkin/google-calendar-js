@@ -6,9 +6,9 @@ const modalContentElem = document.querySelector('.modal__content');
 // отличие в том, что попап отображается в месте клика, а модальное окно - по центру экрана
 
 export function openModal() {
-  modalElem.classList.remove('hidden'); // Відображаємо модальне вікно
+  modalElem.classList.remove('hidden');
 }
 
 export function closeModal() {
-  modalElem.classList.add('hidden'); // Приховуємо модальне вікно
+  modalElem.classList.add('hidden');
 }

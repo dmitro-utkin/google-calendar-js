@@ -1,7 +1,7 @@
-import { getItem } from '../common/storage.js';
-import { generateWeekRange } from '../common/time.utils.js';
-import { renderEvents } from '../events/events.js';
-import { createNumbersArray } from '../common/createNumbersArray.js';
+import { getItem } from "../common/storage.js";
+import { generateWeekRange } from "../common/time.utils.js";
+import { renderEvents } from "../events/events.js";
+import { createNumbersArray } from "../common/createNumbersArray.js";
 
 // const generateDay = () => {
 //   // функция должна сгенерировать и вернуть разметку дня в виде строки
@@ -18,20 +18,19 @@ import { createNumbersArray } from '../common/createNumbersArray.js';
 
 const generateDay = (day) => {
   let dayHTML = `<div class="calendar__day" data-day="${day}">`;
-  for(let i = 0; i < 24; i++) {
-      dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
+  for (let i = 0; i < 24; i++) {
+    dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
   }
-  dayHTML += '</div>';
+  dayHTML += "</div>";
   return dayHTML;
 };
 
 export const renderWeek = () => {
-  let weekHTML = '';
-  const displayedWeekStart = getItem('displayedWeekStart'); // Отримуємо displayedWeekStart з storage
-  const weekDays = generateWeekRange(displayedWeekStart); // Припустимо, що generateWeekRange повертає масив днів тижня
-  weekDays.forEach(day => {
-      weekHTML += generateDay(day);
+  let weekHTML = "";
+  const displayedWeekStart = getItem("displayedWeekStart");
+  const weekDays = generateWeekRange(displayedWeekStart);
+  weekDays.forEach((day) => {
+    weekHTML += generateDay(day);
   });
-  document.querySelector('.calendar__week').innerHTML = weekHTML;
-  // Тут ви можете викликати renderEvents для відображення подій цього тижня
+  document.querySelector(".calendar__week").innerHTML = weekHTML;
 };

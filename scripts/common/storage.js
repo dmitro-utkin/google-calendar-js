@@ -1,4 +1,5 @@
-let storage = {
+export const storage = {
+
   // используется для удаления события
   eventIdToDelete: null,
   // хранит дату понедельника той отображаемой недели
@@ -7,7 +8,7 @@ let storage = {
   events: [],
   // это все данные, которые вам нужно хранить для работы приложения
 };
-
+// console.log(storage)
 export const setItem = (key, value) => {
   // ф-ция должна устанавливать значения в объект storage
   storage[key] = value;
