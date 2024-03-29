@@ -4,8 +4,10 @@ import { renderHeader } from "../calendar/header.js";
 import { getStartOfWeek, getDisplayedMonth } from "../common/time.utils.js";
 
 
-
-const navElem = document.querySelector(".navigation");
+const prevButton = document.querySelector(".navigation__nav-icon[data-direction='prev']");
+const nextButton = document.querySelector(".navigation__nav-icon[data-direction='next']");
+const todayButton = document.querySelector(".navigation__today-btn");
+// const navElem = document.querySelector(".navigation");
 const displayedMonthElem = document.querySelector(
   ".navigation__displayed-month"
 );
@@ -29,9 +31,9 @@ const onChangeWeek = (event) => {
     newDisplayedWeekStart = new Date(displayedWeekStart);
 
     if (direction === "prev") {
-      newDisplayedWeekStart.setDate(displayedWeekStart.getDate() - 7);
+      newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) - 7);
     } else {
-      newDisplayedWeekStart.setDate(displayedWeekStart.getDate() + 7);
+      newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) + 7);
     }
   } else if (direction === "today") {
     newDisplayedWeekStart = getStartOfWeek(new Date()); // Отримати початок поточного тижня
@@ -47,5 +49,8 @@ const onChangeWeek = (event) => {
 
 export const initNavigation = () => {
   renderCurrentMonth();
-  navElem.addEventListener("click", onChangeWeek);
+  // navElem.addEventListener("click", onChangeWeek);
+  prevButton.addEventListener("click", onChangeWeek);
+  nextButton.addEventListener("click", onChangeWeek);
+  todayButton.addEventListener("click", onChangeWeek);
 };

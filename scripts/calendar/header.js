@@ -21,6 +21,7 @@ export const renderHeader = () => {
         </div>`;
     });
     document.querySelector('.calendar__header').innerHTML = weekHTML;
+    
 };
 renderHeader();
 
