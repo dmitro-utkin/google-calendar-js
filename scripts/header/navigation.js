@@ -36,7 +36,7 @@ const onChangeWeek = (event) => {
       newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) + 7);
     }
   } else if (direction === "today") {
-    newDisplayedWeekStart = getStartOfWeek(new Date()); // Отримати початок поточного тижня
+    newDisplayedWeekStart = getStartOfWeek(new Date());
   }
 
   setItem("displayedWeekStart", newDisplayedWeekStart);
