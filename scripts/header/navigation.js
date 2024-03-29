@@ -29,13 +29,13 @@ const onChangeWeek = (event) => {
   console.log('direction', direction)
   let newDisplayedWeekStart;
   
-  if (direction === "prev" || direction === "next") {
+  if (direction === "next" || direction === "prev") {
     const displayedWeekStart = new Date(getItem("displayedWeekStart"));
     newDisplayedWeekStart = new Date(displayedWeekStart);
     
-    if (direction === "prev") {
+    if (direction === "next") {
       newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) - 7);
-    } else if (direction === "next") {
+    } else {
       newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) + 7);
     }
     

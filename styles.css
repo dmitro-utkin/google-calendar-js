@@ -157,14 +157,14 @@ body {
   display: inline;
   font-size: 10px;
   position: absolute;
-  top: 180px;
+  top: 175px;
   left: 7px;
 }
 .calendar__header {
   display: grid;
   grid-template-columns: repeat(7, 14.2857142857%);
   width: calc(100% - 50px);
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .calendar__day-label {
   display: flex;
@@ -178,9 +178,6 @@ body {
 }
 .calendar__day-label .day-label__day-number {
   font-size: 24px;
-}
-.calendar__body {
-  width: calc(100% - 18px);
 }
 
 .calendar__week {
@@ -209,12 +206,12 @@ body {
 
 .calendar__week-container {
   display: flex;
+  margin-left: 8px;
 }
 .calendar__week-container .calendar__time-scale {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
-  padding-right: 8px;
 }
 .calendar__week-container .time-slot {
   height: 60px;

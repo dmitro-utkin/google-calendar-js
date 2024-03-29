@@ -10,7 +10,7 @@
     display: inline;
     font-size: 10px;
     position: absolute;
-    top: 180px;
+    top: 175px;
     left: 7px;
   }
 
@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: repeat(7, calc(100% / 7));
     width: calc(100% - 50px);
-    margin-left: 30px;
+    margin-left: 20px;
   }
 
   &__day-label {
@@ -35,10 +35,6 @@
     .day-label__day-number {
       font-size: 24px;
     }
-  }
-  
-  &__body {
-    width: calc(100% - 18px);
   }
 }
 

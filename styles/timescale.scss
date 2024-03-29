@@ -1,12 +1,12 @@
 // стили боковой временной шкалы
 .calendar__week-container {
   display: flex;
+  margin-left: 8px;
 
   .calendar__time-scale {
     display: flex;
     flex-direction: column;
     padding-top: 8px;
-    padding-right: 8px;
   }
 
   .time-slot {
