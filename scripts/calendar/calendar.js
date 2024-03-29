@@ -18,11 +18,15 @@ import { createNumbersArray } from "../common/createNumbersArray.js";
 
 const generateDay = (day) => {
   let dayHTML = `<div class="calendar__day" data-day="${day}">`;
-  for (let i = 0; i < 24; i++) {
-    dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
-  }
-  dayHTML += "</div>";
-  return dayHTML;
+  // for (let i = 0; i < 24; i++) {
+  //   dayHTML += `<div class="calendar__time-slot" data-time="${i}"></div>`;
+  // }
+  // dayHTML += "</div>";
+  // return dayHTML;
+  const slotsArray = createNumbersArray(0, 24);
+  return slotsArray
+    .map(timeSlot => `<div class="calendar__time-slot" data-time="${timeSlot}"></div>`)
+    .join('')
 };
 
 export const renderWeek = () => {
