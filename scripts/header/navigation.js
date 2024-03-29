@@ -34,9 +34,9 @@ const onChangeWeek = (event) => {
     newDisplayedWeekStart = new Date(displayedWeekStart);
     
     if (direction === "next") {
-      newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) - 7);
+      newDisplayedWeekStart.setDate(displayedWeekStart.getDate() + 7);
     } else if (direction === "prev") {
-      newDisplayedWeekStart.setDate(new Date(displayedWeekStart.getDate()) + 7);
+      newDisplayedWeekStart.setDate(displayedWeekStart.getDate() - 7);
     }
     
   } else if (direction === "today") {
