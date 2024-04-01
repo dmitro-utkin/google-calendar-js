@@ -208,6 +208,9 @@ body {
   border-top: none;
   position: relative;
 }
+.calendar__week .calendar__day .calendar__time-slot:hover {
+  background-color: rgb(208, 229, 248);
+}
 .calendar__week .calendar__day .calendar__time-slot:first-child {
   border-top: 1px solid #ccc;
 }

@@ -13,7 +13,7 @@ export const renderHeader = () => {
     const weekDays = generateWeekRange(displayedWeekStart);
     let weekHTML = '';
 
-    const today = new Date(); // Отримання поточної дати
+    const today = new Date();
 
     weekDays.forEach(day => {
         const dayOfWeek = daysOfWeek[day.getDay()];

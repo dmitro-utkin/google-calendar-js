@@ -17,12 +17,12 @@ function renderCurrentMonth() {
 }
 
 const onChangeWeek = (event) => {
-  console.log('Start of onChangeWeek function');
+  // console.log('Start of onChangeWeek function');
   // при переключении недели обновите displayedWeekStart в storage
   // и перерисуйте все необходимые элементы страницы (renderHeader, renderWeek, renderCurrentMonth)
   const buttonElem = event.target.closest("button");
   const {direction} = buttonElem.dataset;
-  console.log('direction', direction)
+  // console.log('direction', direction)
   let newDisplayedWeekStart;
   
   if (direction === "next" || direction === "prev") {
@@ -40,17 +40,17 @@ const onChangeWeek = (event) => {
   }
   
   setItem("displayedWeekStart", newDisplayedWeekStart);
-  console.log('New Displayed Week Start:', newDisplayedWeekStart);
+  // console.log('New Displayed Week Start:', newDisplayedWeekStart);
 
-  console.log('Updated `displayedWeekStart` in storage');
+  // console.log('Updated `displayedWeekStart` in storage');
   renderHeader();
-  console.log('Header re-rendered');
+  // console.log('Header re-rendered');
   renderWeek();
-  console.log('Week re-rendered');
+  // console.log('Week re-rendered');
   renderCurrentMonth();
-  console.log('Current month re-rendered');
+  // console.log('Current month re-rendered');
 
-  console.log('End of onChangeWeek function');
+  // console.log('End of onChangeWeek function');
 };
 
 
