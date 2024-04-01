@@ -3,10 +3,6 @@ import { renderWeek } from "../calendar/calendar.js";
 import { renderHeader } from "../calendar/header.js";
 import { getStartOfWeek, getDisplayedMonth } from "../common/time.utils.js";
 
-
-// const prevButton = document.querySelector(".navigation__nav-icon[data-direction='prev']");
-// const nextButton = document.querySelector(".navigation__nav-icon[data-direction='next']");
-// const todayButton = document.querySelector(".navigation__today-btn");
 const navElem = document.querySelector(".navigation");
 const displayedMonthElem = document.querySelector(
   ".navigation__displayed-month"
@@ -62,7 +58,4 @@ const onChangeWeek = (event) => {
 export const initNavigation = () => {
   renderCurrentMonth();
   navElem.addEventListener("click", onChangeWeek);
-  // prevButton.addEventListener("click", onChangeWeek);
-  // nextButton.addEventListener("click", onChangeWeek);
-  // todayButton.addEventListener("click", onChangeWeek);
 };

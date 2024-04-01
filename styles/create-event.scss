@@ -1,5 +1,8 @@
 // стили формы события внутри модального окна
-.create-event {
+.modal__content {
+  width: 440px;
+
+  .create-event {
   position: relative;
 
   &__close-btn {
@@ -18,15 +21,15 @@
   &__clock-icon {
     position: absolute;
     top: 102px;
-    width:20px;
-    height:20px;
+    width: 20px;
+    height: 20px;
   }
 
   &__description-icon {
     position: absolute;
     top: 175px;
-    width:20px;
-    height:20px;
+    width: 20px;
+    height: 20px;
   }
 
   .event-form {
@@ -36,14 +39,21 @@
       border: none;
     }
 
+    
     input[name="title"] {
       border-bottom: 2px solid dodgerblue;
       width: -webkit-fill-available;
       margin-bottom: 50px;
     }
-
+    
     &__time {
       margin-bottom: 50px;
+      input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+      }
     }
 
     textarea {
@@ -61,4 +71,4 @@
       cursor: pointer;
     }
   }
-}
+}}

@@ -222,51 +222,60 @@ body {
   font-size: 12px;
 }
 
-.create-event {
+.modal__content {
+  width: 440px;
+}
+.modal__content .create-event {
   position: relative;
 }
-.create-event__close-btn {
+.modal__content .create-event__close-btn {
   display: block;
   margin-left: auto;
   border: none;
   background: #fff;
   cursor: pointer;
 }
-.create-event__close-btn img {
+.modal__content .create-event__close-btn img {
   width: 15px;
   height: 15px;
 }
-.create-event__clock-icon {
+.modal__content .create-event__clock-icon {
   position: absolute;
   top: 102px;
   width: 20px;
   height: 20px;
 }
-.create-event__description-icon {
+.modal__content .create-event__description-icon {
   position: absolute;
   top: 175px;
   width: 20px;
   height: 20px;
 }
-.create-event .event-form {
+.modal__content .create-event .event-form {
   padding-left: 40px;
 }
-.create-event .event-form__field {
+.modal__content .create-event .event-form__field {
   border: none;
 }
-.create-event .event-form input[name=title] {
+.modal__content .create-event .event-form input[name=title] {
   border-bottom: 2px solid dodgerblue;
   width: -webkit-fill-available;
   margin-bottom: 50px;
 }
-.create-event .event-form__time {
+.modal__content .create-event .event-form__time {
   margin-bottom: 50px;
 }
-.create-event .event-form textarea {
+.modal__content .create-event .event-form__time input[type=time]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.modal__content .create-event .event-form__time input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.modal__content .create-event .event-form textarea {
   margin-bottom: 70px;
   width: -webkit-fill-available;
 }
-.create-event .event-form__submit-btn {
+.modal__content .create-event .event-form__submit-btn {
   display: block;
   margin-left: auto;
   border: none;
