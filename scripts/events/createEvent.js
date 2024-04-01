@@ -8,11 +8,21 @@ const closeEventFormBtn = document.querySelector('.create-event__close-btn');
 
 function clearEventForm() {
   // ф-ция должна очистить поля формы от значений
+  document.querySelector('input[name="date"]').value = '';
+  document.querySelector('input[name="startTime"]').value = '';
+  document.querySelector('input[name="endTime"]').value = '';
+  document.querySelector('input[name="title"]').value = '';
+  document.querySelector('textarea[name="description"]').value = '';
 }
 
 function onCloseEventForm() {
   // здесь нужно закрыть модальное окно и очистить форму
+  const modal = document.querySelector('.modal');
+
+  modal.classList.add('hidden');
+  clearEventForm();
 }
+closeEventFormBtn.addEventListener('click', onCloseEventForm);
 
 function onCreateEvent(event) {
   // задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage

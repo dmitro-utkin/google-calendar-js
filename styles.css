@@ -265,12 +265,6 @@ body {
 .modal__content .create-event .event-form__time {
   margin-bottom: 50px;
 }
-.modal__content .create-event .event-form__time input[type=time]::-webkit-calendar-picker-indicator {
-  display: none;
-}
-.modal__content .create-event .event-form__time input[type=date]::-webkit-calendar-picker-indicator {
-  display: none;
-}
 .modal__content .create-event .event-form textarea {
   margin-bottom: 70px;
   width: -webkit-fill-available;
