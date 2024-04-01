@@ -12,12 +12,20 @@ export const renderHeader = () => {
   const displayedWeekStart = getItem('displayedWeekStart');
     const weekDays = generateWeekRange(displayedWeekStart);
     let weekHTML = '';
+
+    const today = new Date(); // Отримання поточної дати
+
     weekDays.forEach(day => {
         const dayOfWeek = daysOfWeek[day.getDay()];
         const dayOfMonth = day.getDate();
+
+        const isToday = day.toDateString() === today.toDateString();
+        const todayDayClass = isToday ? 'today' : ''; 
+        const todayNameClass = isToday ? 'today-name' : ''; 
+
         weekHTML += `<div class="calendar__day-label day-label">
-            <span class="day-label__day-name">${dayOfWeek}</span>
-            <span class="day-label__day-number">${dayOfMonth}</span>
+            <span class="day-label__day-name ${todayNameClass}">${dayOfWeek}</span>
+            <span class="day-label__day-number  ${todayDayClass}">${dayOfMonth}</span>
         </div>`;
     });
     document.querySelector('.calendar__header').innerHTML = weekHTML;

@@ -48,6 +48,10 @@
     
     &__time {
       margin-bottom: 50px;
+
+      input[type="time"] {
+        margin-left: 10px;
+      }
     }
 
     textarea {
