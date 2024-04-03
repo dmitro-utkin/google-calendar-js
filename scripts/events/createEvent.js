@@ -6,18 +6,13 @@ import { closeModal } from "../common/modal.js";
 const eventFormElem = document.querySelector(".event-form");
 const closeEventFormBtn = document.querySelector(".create-event__close-btn");
 
-const eventFormFields = document.querySelectorAll(
-  ".event-form input, .event-form textarea"
-);
 function clearEventForm() {
-  eventFormFields.forEach((field) => (field.value = ""));
+  eventFormElem.reset();
 }
 
 function onCloseEventForm() {
   // здесь нужно закрыть модальное окно и очистить форму
-  const modal = document.querySelector(".modal");
-
-  modal.classList.add("hidden");
+  closeModal();
   clearEventForm();
 }
 
@@ -31,20 +26,36 @@ function onCreateEvent(event) {
   // полученное событие добавляем в массив событий, что хранится в storage
   // закрываем форму
   // и запускаем перерисовку событий с помощью renderEvents
+
+  event.preventDefault();
+
+  const formData = Array.from(new FormData(eventFormElem)).reduce((acc, field) => {
+    const [name, value] = field;
+
+    return {
+      ...acc,
+      [name]: value,
+    };
+  }, {});
+  const { date, startTime, endTime, title, description } = formData;
+
+  const events = getItem("events") || [];
+  const newEvent = events.concat({
+    id: Math.random(),
+    title,
+    description,
+    start: getDateTime(date, startTime),
+    end: getDateTime(date, endTime),
+  });
+
+  setItem("events", newEvent);
+  onCloseEventForm();
+  renderEvents();
 }
 
 export function initEventForm() {
   // подпишитесь на сабмит формы и на закрытие формы
     // отримуємо форму
-    const form = document.querySelector('.event-form');
-
-    // подписуємося на подію submit форми
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      onCreateEvent(event);
-    });
-
-    closeEventFormBtn.addEventListener('click', () => {
-      onCloseEventForm();
-    });
+  eventFormElem.addEventListener("submit", onCreateEvent);
+  closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }

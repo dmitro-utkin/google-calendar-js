@@ -19,6 +19,28 @@ const createEventElement = (event) => {
   // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
   // нужно добавить id события в дата атрибут
   // здесь для создания DOM элемента события используйте document.createElement
+
+  const { id, title, start, end } = event;
+
+  const eventElem = document.createElement('div');
+  eventElem.dataset.eventId = id;
+  eventElem.style.top = `${start.getMinutes()}px`;
+  eventElem.style.height = `${end.getMinutes() - start.getMinutes()}px`;
+  eventElem.classList.add('event');
+
+  const eventTitleElem = document.createElement('div');
+  eventTitleElem.textContent = title;
+  eventTitleElem.classList.add('event__title');
+
+  const eventTimeElem = document.createElement('div');
+  eventTimeElem.textContent = `${shmoment(start).format('HH:mm')} - ${shmoment(
+    end
+  ).format('HH:mm')}`;
+  eventTimeElem.classList.add('event__time');
+
+  eventElem.append(eventTitleElem, eventTimeElem);
+
+  return eventElem;
 };
 
 export const renderEvents = () => {
@@ -36,7 +58,19 @@ function onDeleteEvent() {
   // удаляем из массива нужное событие и записываем в storage новый массив
   // закрыть попап
   // перерисовать события на странице в соответствии с новым списком событий в storage (renderEvents)
+  const events = getItem('events') || [];
+  const eventIdToDelete = getItem('eventIdToDelete');
+  const index = events.findIndex(event => event.id === eventIdToDelete);
+
+  events.splice(index, 1);
+
+  setItem('events', events);
+  setItem('eventIdToDelete', null);
+
+  closePopup();
+  renderEvents();
 }
+
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
 
