@@ -15,7 +15,7 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  background-color: #fff;
+  background-color: #transparent;
 }
 
 .icon-button {
@@ -74,7 +74,8 @@
 
 .header {
   display: flex;
-  padding: 20px 10px 10px 50px;
+  padding: 10px;
+  padding-left: 20px;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -128,20 +129,23 @@
 }
 
 .calendar {
-  display: inline;
   padding-top: 80px;
-  padding-right: 10px;
 }
 .calendar__time-label {
   display: inline;
   font-size: 10px;
-  position: absolute;
+  position: fixed;
+  z-index: 2;
   top: 185px;
   left: 7px;
 }
 .calendar__header {
   display: flex;
-  margin-left: 10px;
+  position: fixed;
+  top: 76px;
+  width: 100%;
+  background: white;
+  z-index: 1;
 }
 .calendar__day-label {
   display: flex;
@@ -169,7 +173,7 @@
 
 .calendar__week {
   display: flex;
-  width: 97%;
+  width: calc(100% - 90px);
   height: 100%;
 }
 .calendar__week .calendar__day {
@@ -197,11 +201,13 @@
 .calendar__week-container {
   display: flex;
   margin-left: 8px;
+  margin-top: 120px;
 }
 .calendar__week-container .calendar__time-scale {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
+  padding-left: 13px;
 }
 .calendar__week-container .time-slot {
   height: 60px;

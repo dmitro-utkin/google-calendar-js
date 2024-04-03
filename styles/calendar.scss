@@ -1,21 +1,24 @@
 // стили сетки календаря и заголовка календаря с днями недели
 
 .calendar {
-  display: inline;
   padding-top: 80px;
-  padding-right: 10px;
   
   &__time-label {
     display: inline;
     font-size: 10px;
-    position: absolute;
+    position: fixed;
+    z-index: 2;
     top: 185px;
     left: 7px;
   }
 
   &__header {
     display: flex;
-    margin-left: 10px;
+    position: fixed;
+    top: 76px;
+    width: 100%;
+    background: white;
+    z-index: 1;
   }
 
   &__day-label {
@@ -49,7 +52,7 @@
 
 .calendar__week {
   display: flex;
-  width: 97%;
+  width: calc(100% - 90px);
   height: 100%;
   
   .calendar__day {
