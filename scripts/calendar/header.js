@@ -20,8 +20,8 @@ export const renderHeader = () => {
         const dayOfMonth = day.getDate();
 
         const isToday = day.toDateString() === today.toDateString();
-        const todayDayClass = isToday ? 'today' : ''; 
         const todayNameClass = isToday ? 'today-name' : ''; 
+        const todayDayClass = isToday ? 'today-number' : ''; 
 
         weekHTML += `<div class="calendar__day-label day-label">
             <span class="day-label__day-name ${todayNameClass}">${dayOfWeek}</span>
