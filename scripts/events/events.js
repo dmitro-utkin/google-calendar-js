@@ -5,13 +5,22 @@ import { openPopup, closePopup } from '../common/popup.js';
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
 
+const eventIdToDeleteKey = 'eventIdToDelete';
+
 function handleEventClick(event) {
-  // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
-  // установите eventIdToDelete с id события в storage
+  const target = event.target;
+  const isEventElement = target.classList.contains('event');
+  if (isEventElement) {
+    const eventId = target.dataset.id;
+    setItem(eventIdToDeleteKey, eventId);
+    openPopup();
+  }
 }
 
+
 function removeEventsFromCalendar() {
-  // ф-ция для удаления всех событий с календаря
+  // f-ция для удаления всех событий с календаря
+  weekElem.innerHTML = "";
 }
 
 const createEventElement = (event) => {

@@ -7,6 +7,7 @@ const eventFormElem = document.querySelector(".event-form");
 const closeEventFormBtn = document.querySelector(".create-event__close-btn");
 
 function clearEventForm() {
+  // ф-ция должна очистить поля формы от значений
   eventFormElem.reset();
 }
 
