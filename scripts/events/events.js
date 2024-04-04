@@ -5,22 +5,25 @@ import { openPopup, closePopup } from '../common/popup.js';
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
 
-const eventIdToDeleteKey = 'eventIdToDelete';
 
 function handleEventClick(event) {
-  const target = event.target;
-  const isEventElement = target.classList.contains('event');
-  if (isEventElement) {
-    const eventId = target.dataset.id;
-    setItem(eventIdToDeleteKey, eventId);
-    openPopup();
+  event.preventDefault();
+  let isEvent = event.target.classList.contains('event');
+  if (!isEvent) {
+    return;
   }
+  openPopup(event.clientX, event.clientY);
+  setItem('eventIdToDelete', event.target.dataset.eventId);
+  // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
+  // установите eventIdToDelete с id события в storage
 }
-
 
 function removeEventsFromCalendar() {
   // f-ция для удаления всех событий с календаря
-  weekElem.innerHTML = "";
+  const eventsElems = document.querySelectorAll('.event');
+  if (eventsElems) {
+    eventsElems.forEach(eventElem => eventElem.remove());
+  }
 }
 
 const createEventElement = (event) => {
@@ -29,12 +32,15 @@ const createEventElement = (event) => {
   // нужно добавить id события в дата атрибут
   // здесь для создания DOM элемента события используйте document.createElement
 
-  const { id, title, start, end } = event;
+  const { start, end, title, id, description  } = event;
 
   const eventElem = document.createElement('div');
   eventElem.dataset.eventId = id;
-  eventElem.style.top = `${start.getMinutes()}px`;
-  eventElem.style.height = `${end.getMinutes() - start.getMinutes()}px`;
+  eventElem.style.top = start.getMinutes() + 'px';
+  let eventHeight = end - start;
+  eventHeight /= 60000;
+
+  eventElem.style.height = eventHeight.toFixed() + 'px';
   eventElem.classList.add('event');
 
   const eventTitleElem = document.createElement('div');
@@ -42,13 +48,14 @@ const createEventElement = (event) => {
   eventTitleElem.classList.add('event__title');
 
   const eventTimeElem = document.createElement('div');
-  eventTimeElem.textContent = `${shmoment(start).format('HH:mm')} - ${shmoment(
-    end
-  ).format('HH:mm')}`;
+  eventTimeElem.textContent = `${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`;
   eventTimeElem.classList.add('event__time');
-
-  eventElem.append(eventTitleElem, eventTimeElem);
-
+  
+  const eventDescriptionElem = document.createElement('div');
+  eventDescriptionElem.textContent = description;
+  eventDescriptionElem.classList.add('event__description');
+  
+  eventElem.append(eventTitleElem, eventTimeElem, eventDescriptionElem);
   return eventElem;
 };
 
@@ -60,6 +67,22 @@ export const renderEvents = () => {
   // и вставляем туда событие
   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
   // не забудьте удалить с календаря старые события перед добавлением новых
+  removeEventsFromCalendar();
+  const events = getItem('events') || [];
+  const startDateTime = getItem('displayedWeekStart');
+  const endDateTime = shmoment(startDateTime).add('days', 7).result();
+  events
+    .filter(event => {
+      return event.start >= startDateTime && event.end < endDateTime;
+    })
+    .forEach(event => {
+      const { start } = event;
+      const eventElem = createEventElement(event);
+      const slotElem = document.querySelector(
+        `.calendar__day[data-day="${start.getDate()}"] .calendar__time-slot[data-time="${start.getHours()}"]`
+      );
+      slotElem.append(eventElem);
+    });
 };
 
 function onDeleteEvent() {

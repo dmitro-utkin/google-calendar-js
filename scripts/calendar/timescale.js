@@ -16,4 +16,3 @@ export const renderTimescale = () => {
   }
   document.querySelector('.calendar__time-scale').innerHTML = timescaleHTML;
 };
-renderTimescale();

@@ -49,7 +49,7 @@ function onCreateEvent(event) {
     end: getDateTime(date, endTime),
   });
 
-  setItem("events", newEvent);
+  setItem('events', newEvent);
   onCloseEventForm();
   renderEvents();
 }

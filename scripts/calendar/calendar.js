@@ -7,13 +7,15 @@ const generateDay = (day) => {
   // функция должна сгенерировать и вернуть разметку дня в виде строки
   // разметка состоит из 24 часовых временных слотов (.calendar__time-slot)
 
-  let dayHTML = `<div class="calendar__day" data-day="${day}">`;
-  for (let i = 0; i < 24; i++) {
-    dayHTML += `<div class="calendar__time-slot" 
-                      data-time="${i}"></div>`;
-  }
-  dayHTML += "</div>";
-  return dayHTML;
+  const hoursOfDay = createNumbersArray(0, 23)
+    .map(
+      timeSlot =>
+        `<div class="calendar__time-slot"
+        data-time="${timeSlot}">   
+          </div>`
+    )
+    .join('');
+  return hoursOfDay;
 };
 
 export const renderWeek = () => {
@@ -23,11 +25,12 @@ export const renderWeek = () => {
   // каждый день должен содержать в дата атрибуте порядковый номер дня в месяце
   // после того, как отрисовали всю сетку для отображаемой недели, нужно отобразить события этой недели с помощью renderEvents
   
-  let weekHTML = "";
-  const displayedWeekStart = getItem("displayedWeekStart");
-  const weekDays = generateWeekRange(displayedWeekStart);
-  weekDays.forEach((day) => {
-    weekHTML += generateDay(day);
-  });
-  document.querySelector(".calendar__week").innerHTML = weekHTML;
+  const startDate = getItem('displayedWeekStart');
+  const daysList = generateWeekRange(startDate);
+  const dayTemplateString = generateDay();
+  const weekElementString = daysList
+    .map(day => `<div class="calendar__day" data-day="${day.getDate()}">${dayTemplateString}</div>`)
+    .join('');
+  document.querySelector('.calendar__week').innerHTML = weekElementString;
+  renderEvents();
 };
