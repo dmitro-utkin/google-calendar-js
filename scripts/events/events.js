@@ -94,15 +94,15 @@ export const renderEvents = () => {
 
 function onDeleteEvent() {
   console.log('Deleting event...');
-  const events = getItem('events') || [];
+  const events = getItem('events');
   const eventIdToDelete = getItem('eventIdToDelete');
   console.log('Events from storage:', events);
   console.log('Event id to delete:', eventIdToDelete);
-  const index = events.findIndex(event => event.id === eventIdToDelete);
+  const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
   console.log('Found event index:', index);
 
   events.splice(index, 1);
-
+  
   setItem('events', events);
   setItem('eventIdToDelete', null);
 
