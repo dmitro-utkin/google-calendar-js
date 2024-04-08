@@ -6,17 +6,24 @@ const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
 
 
-function handleEventClick(event) {
-  event.preventDefault();
-  let isEvent = event.target.classList.contains('event');
-  if (!isEvent) {
+const handleEventClick = (event) => {
+  console.log('Event click handler called');
+  const target = event.target.closest('.event');
+  console.log('Target:', target);
+  if (!target) {
+    console.log('Target is falsy, returning');
     return;
   }
+  console.log('Opening popup');
   openPopup(event.clientX, event.clientY);
-  setItem('eventIdToDelete', event.target.dataset.eventId);
+  console.log('Setting eventIdToDelete', target.dataset.eventId);
+  setItem('eventIdToDelete', target.dataset.eventId);
+
   // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
   // установите eventIdToDelete с id события в storage
-}
+};
+
+
 
 function removeEventsFromCalendar() {
   // f-ция для удаления всех событий с календаря
@@ -86,22 +93,27 @@ export const renderEvents = () => {
 };
 
 function onDeleteEvent() {
-  // достаем из storage массив событий и eventIdToDelete
-  // удаляем из массива нужное событие и записываем в storage новый массив
-  // закрыть попап
-  // перерисовать события на странице в соответствии с новым списком событий в storage (renderEvents)
+  console.log('Deleting event...');
   const events = getItem('events') || [];
   const eventIdToDelete = getItem('eventIdToDelete');
+  console.log('Events from storage:', events);
+  console.log('Event id to delete:', eventIdToDelete);
   const index = events.findIndex(event => event.id === eventIdToDelete);
+  console.log('Found event index:', index);
 
   events.splice(index, 1);
 
   setItem('events', events);
   setItem('eventIdToDelete', null);
 
+  console.log('Closing popup...');
   closePopup();
+
+  console.log('Re-rendering events...');
   renderEvents();
+  console.log('Done.');
 }
+
 
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
