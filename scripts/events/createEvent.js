@@ -18,30 +18,22 @@ function onCloseEventForm() {
 }
 
 function onCreateEvent(event) {
-  // задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage
-  // создавать или менять DOM элементы здесь не нужно. Этим займутся другие ф-ции
-  // при подтверждении формы нужно считать данные с формы
-  // с формы вы получите поля date, startTime, endTime, title, description
-  // на основе полей date, startTime, endTime нужно посчитать дату начала и окончания события
-  // date, startTime, endTime - строки. Вам нужно с помощью getDateTime из утилит посчитать start и end объекта события
-  // полученное событие добавляем в массив событий, что хранится в storage
-  // закрываем форму
-  // и запускаем перерисовку событий с помощью renderEvents
-
+// задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage
+// создавать или менять DOM элементы здесь не нужно. Этим займутся другие ф-ции
+// при подтверждении формы нужно считать данные с формы
+// с формы вы получите поля date, startTime, endTime, title, description
+// на основе полей date, startTime, endTime нужно посчитать дату начала и окончания события
+// date, startTime, endTime - строки. Вам нужно с помощью getDateTime из утилит посчитать start и end объекта события
+// полученное событие добавляем в массив событий, что хранится в storage
+// закрываем форму
+// и запускаем перерисовку событий с помощью renderEvents
   event.preventDefault();
+  const formData = Object.fromEntries(new FormData(eventFormElem));
 
-  const formData = Array.from(new FormData(eventFormElem)).reduce((acc, field) => {
-    const [name, value] = field;
-
-    return {
-      ...acc,
-      [name]: value,
-    };
-  }, {});
   const { date, startTime, endTime, title, description } = formData;
-
   const events = getItem("events") || [];
-  const newEvent = events.concat({
+
+  events.push({
     id: Math.random(),
     title,
     description,
@@ -49,7 +41,7 @@ function onCreateEvent(event) {
     end: getDateTime(date, endTime),
   });
 
-  setItem('events', newEvent);
+  setItem('events', events);
   onCloseEventForm();
   renderEvents();
 }

@@ -31,7 +31,6 @@ export const renderHeader = () => {
     document.querySelector('.calendar__header').innerHTML = weekHTML;
     
 };
-renderHeader();
 
 // при клике на кнопку "Create" открыть модальное окно с формой для создания события
 // назначьте здесь обработчик

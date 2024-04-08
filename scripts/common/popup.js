@@ -1,7 +1,6 @@
 const popupElem = document.querySelector('.popup');
 const popupContentElem = document.querySelector('.popup__content');
 
-// в попап нужно передавать координаты, в которых показать попап
 export function openPopup(x, y) {
   popupElem.classList.remove('hidden');
   popupContentElem.style.top = `${y}px`;
@@ -17,4 +16,5 @@ function onClickInsidePopup(event) {
 }
 
 popupContentElem.addEventListener('click', onClickInsidePopup);
+popupContentElem.addEventListener('click', openPopup);
 popupElem.addEventListener('click', closePopup);
