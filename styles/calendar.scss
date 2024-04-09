@@ -3,11 +3,11 @@
 .calendar {
   padding: 5px;
   padding-top: 80px;
-  
+
   &__time-label {
     font-size: 10px;
     position: fixed;
-    z-index: 20;
+    z-index: 21;
     top: 185px;
     left: 2px;
   }
@@ -32,12 +32,12 @@
     text-transform: uppercase;
     margin: 20px auto;
     position: relative;
-    
+
     .day-label__day-name {
       position: absolute;
       margin-bottom: 18px;
     }
-    
+
     .day-label__day-number {
       position: absolute;
       top: 40px;
@@ -58,19 +58,18 @@
   .today-name {
     color: rgb(0, 153, 255);
     margin-bottom: 10px;
-    
   }
 }
 
 .calendar__week {
   display: flex;
   width: 100%;
-  
+
   .calendar__day {
     display: grid;
     grid-template-rows: repeat(24, 60px);
     width: 100%;
-    
+
     .calendar__time-slot {
       border: 1px solid #ccc;
       border-right: none;
@@ -82,14 +81,34 @@
       }
 
       &:first-child {
-        border-top:  1px solid #ccc;
+        border-top: 1px solid #ccc;
       }
     }
 
     &:last-child {
-      border-right:  1px solid #ccc;
+      border-right: 1px solid #ccc;
     }
   }
 }
 
+.time-line {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 19;
 
+  &__circle {
+    width: 5px;
+    height: 5px;
+    border: none;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  &__rectangle {
+    height: 1px;
+    width: calc((100vw - 76px) / 7 - 5px);
+    border: none;
+    background-color: red;
+  }
+}

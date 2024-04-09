@@ -45,7 +45,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(204, 204, 204, 0.2705882353);
-  z-index: 10;
+  z-index: 21;
 }
 
 .popup__content {
@@ -134,7 +134,7 @@
 .calendar__time-label {
   font-size: 10px;
   position: fixed;
-  z-index: 20;
+  z-index: 21;
   top: 185px;
   left: 2px;
 }
@@ -204,6 +204,26 @@
 }
 .calendar__week .calendar__day:last-child {
   border-right: 1px solid #ccc;
+}
+
+.time-line {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 19;
+}
+.time-line__circle {
+  width: 5px;
+  height: 5px;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+}
+.time-line__rectangle {
+  height: 1px;
+  width: calc((100vw - 76px) / 7 - 5px);
+  border: none;
+  background-color: red;
 }
 
 .calendar__week-container {
@@ -295,7 +315,7 @@
   color: #fff;
   border-radius: 5px;
   position: absolute;
-  z-index: 5;
+  z-index: 10;
 }
 .event__title {
   text-align: center;

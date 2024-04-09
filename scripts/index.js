@@ -12,6 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   renderWeek();
   renderHeader();
-  initNavigation();
+  initNavigation()
   initEventForm();
 });

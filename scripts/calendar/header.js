@@ -15,7 +15,7 @@ export const renderHeader = () => {
 
     const today = new Date();
 
-    weekDays.forEach(day => {
+    weekDays.forEach((day, index) => {
         const dayOfWeek = daysOfWeek[day.getDay()];
         const dayOfMonth = day.getDate();
 
@@ -29,7 +29,6 @@ export const renderHeader = () => {
         </div>`;
     });
     document.querySelector('.calendar__header').innerHTML = weekHTML;
-    
 };
 
 // при клике на кнопку "Create" открыть модальное окно с формой для создания события
