@@ -7,16 +7,11 @@ const deleteEventBtn = document.querySelector('.delete-event-btn');
 
 
 const handleEventClick = (event) => {
-  console.log('Event click handler called');
   const target = event.target.closest('.event');
-  console.log('Target:', target);
   if (!target) {
-    console.log('Target is falsy, returning');
     return;
   }
-  console.log('Opening popup');
   openPopup(event.clientX, event.clientY);
-  console.log('Setting eventIdToDelete', target.dataset.eventId);
   setItem('eventIdToDelete', target.dataset.eventId);
 
   // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
