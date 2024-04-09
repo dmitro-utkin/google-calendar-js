@@ -1,5 +1,14 @@
 export const timeLine = () => {
-  const curTimeEl = document.querySelector('.time-line');
+  const curTimeEl = document.createElement('div');
+  curTimeEl.className = 'time-line';
+
+  const circleEl = document.createElement('div');
+  circleEl.className = 'time-line__circle';
+  curTimeEl.appendChild(circleEl);
+
+  const rectangleEl = document.createElement('div');
+  rectangleEl.className = 'time-line__rectangle';
+  curTimeEl.appendChild(rectangleEl);
   const timeSlots = document.querySelectorAll('.calendar__time-slot');
 
   const currentTime = new Date();
