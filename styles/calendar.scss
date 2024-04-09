@@ -72,6 +72,7 @@
 
     .calendar__time-slot {
       border: 1px solid #ccc;
+      height: 61px;
       border-right: none;
       border-top: none;
       position: relative;
@@ -106,8 +107,8 @@
   }
 
   &__rectangle {
-    height: 1px;
-    width: calc((100vw - 76px) / 7 - 5px);
+    height: .5px;
+    width: calc(100vw / 7 - 15px);
     border: none;
     background-color: red;
   }

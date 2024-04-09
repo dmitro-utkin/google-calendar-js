@@ -1,4 +1,9 @@
 export const timeLine = () => {
+  const existingTimeLine = document.querySelector('.time-line');
+  if (existingTimeLine) {
+    existingTimeLine.remove();
+  }
+
   const curTimeEl = document.createElement('div');
   curTimeEl.className = 'time-line';
 
@@ -18,7 +23,8 @@ export const timeLine = () => {
 
   curTimeEl.dataset.time = currentHour;
   curTimeEl.dataset.day = currentDay;
-  curTimeEl.style.top = `${currentMinute}px`;
+  curTimeEl.style.left = '-3px';
+  curTimeEl.style.top = `${currentMinute - 2}px`;
 
   let selectedIndex = -1;
 

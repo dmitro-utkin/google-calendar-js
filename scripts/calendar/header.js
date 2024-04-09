@@ -15,7 +15,7 @@ export const renderHeader = () => {
 
     const today = new Date();
 
-    weekDays.forEach((day, index) => {
+    weekDays.forEach(day => {
         const dayOfWeek = daysOfWeek[day.getDay()];
         const dayOfMonth = day.getDate();
 
