@@ -42,6 +42,7 @@ const createEventElement = (event) => {
   let eventHeight = end - start;
   eventHeight /= 60000;
 
+  eventHeight = Math.max(eventHeight, 100);
   eventElem.style.height = eventHeight.toFixed() + 'px';
   eventElem.classList.add('event');
 
