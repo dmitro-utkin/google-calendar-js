@@ -31,10 +31,12 @@ const createEventElement = (event) => {
   // здесь для создания DOM элемента события используйте document.createElement
 
   const { start, end, title, id, description  } = event;
+  const startDate = new Date(start);
+  const endDate = new Date(end);
 
   const eventElem = document.createElement('div');
   eventElem.dataset.eventId = id;
-  eventElem.style.top = start.getMinutes() + 'px';
+  eventElem.style.top = startDate.getMinutes() + 'px';
   let eventHeight = end - start;
   eventHeight /= 60000;
 
@@ -47,7 +49,7 @@ const createEventElement = (event) => {
   eventTitleElem.classList.add('event__title');
 
   const eventTimeElem = document.createElement('div');
-  eventTimeElem.textContent = `${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`;
+  eventTimeElem.textContent = `${startDate.getHours()}:${startDate.getMinutes()} - ${endDate.getHours()}:${endDate.getMinutes()}`;
   eventTimeElem.classList.add('event__time');
   
   const eventDescriptionElem = document.createElement('div');
@@ -68,17 +70,13 @@ export const renderEvents = () => {
   // не забудьте удалить с календаря старые события перед добавлением новых
   removeEventsFromCalendar();
   const events = getItem('events') || [];
-  const startDateTime = getItem('displayedWeekStart');
-  const endDateTime = shmoment(startDateTime).add('days', 7).result();
   events
-    .filter(event => {
-      return event.start >= startDateTime && event.end < endDateTime;
-    })
     .forEach(event => {
       const { start } = event;
+      const startDate = new Date(start);
       const eventElem = createEventElement(event);
       const slotElem = document.querySelector(
-        `.calendar__day[data-day="${new Date(start).getDate()}"] .calendar__time-slot[data-time="${new Date(start).getHours()}"]`
+        `.calendar__day[data-day="${startDate.getDate()}"] .calendar__time-slot[data-time="${startDate.getHours()}"]`
       );
       slotElem.append(eventElem);
     });
