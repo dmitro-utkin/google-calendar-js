@@ -5,20 +5,16 @@ import { openPopup, closePopup } from '../common/popup.js';
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
 
-
 const handleEventClick = (event) => {
+  // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
+  // установите eventIdToDelete с id события в storage
   const target = event.target.closest('.event');
   if (!target) {
     return;
   }
   openPopup(event.clientX, event.clientY);
   setItem('eventIdToDelete', target.dataset.eventId);
-
-  // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
-  // установите eventIdToDelete с id события в storage
 };
-
-
 
 function removeEventsFromCalendar() {
   // f-ция для удаления всех событий с календаря
@@ -71,10 +67,8 @@ export const renderEvents = () => {
   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
   // не забудьте удалить с календаря старые события перед добавлением новых
   removeEventsFromCalendar();
-  // const events = getItem('events') || [];
-  // const startDateTime = getItem('displayedWeekStart');
-  const events = JSON.parse(localStorage.getItem('events')) || [];
-  const startDateTime = JSON.parse(localStorage.getItem('displayedWeekStart'));
+  const events = getItem('events') || [];
+  const startDateTime = getItem('displayedWeekStart');
   const endDateTime = shmoment(startDateTime).add('days', 7).result();
   events
     .filter(event => {
@@ -91,28 +85,17 @@ export const renderEvents = () => {
 };
 
 function onDeleteEvent() {
-  console.log('Deleting event...');
   const events = getItem('events');
   const eventIdToDelete = getItem('eventIdToDelete');
-  console.log('Events from storage:', events);
-  console.log('Event id to delete:', eventIdToDelete);
   const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
-  console.log('Found event index:', index);
 
   events.splice(index, 1);
   
   setItem('events', events);
   setItem('eventIdToDelete', null);
-
-  console.log('Closing popup...');
   closePopup();
-
-  console.log('Re-rendering events...');
   renderEvents();
-  console.log('Done.');
 }
-
-
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
 
