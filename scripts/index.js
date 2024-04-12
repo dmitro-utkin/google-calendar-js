@@ -6,6 +6,8 @@ import { setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
 import { timeLine } from './calendar/timeline.js';
+import { renderEvents } from './events/events.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // инициализация всех элементов
@@ -16,4 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation()
   initEventForm();
   timeLine();
+  renderEvents();
 });
+
+const onStorageChange = (e) => {
+  if (e.key === 'events') {
+    renderTimescale();
+    setItem('displayedWeekStart', getStartOfWeek(new Date()));
+    renderWeek();
+    renderHeader();
+    initNavigation()
+    initEventForm();
+    timeLine();
+    renderEvents();
+  }
+  
+window.addEventListener('storage', onStorageChange)
+}
