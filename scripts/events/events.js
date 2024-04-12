@@ -78,7 +78,7 @@ export const renderEvents = () => {
       const { start } = event;
       const eventElem = createEventElement(event);
       const slotElem = document.querySelector(
-        `.calendar__day[data-day="${start.getDate()}"] .calendar__time-slot[data-time="${start.getHours()}"]`
+        `.calendar__day[data-day="${new Date(start).getDate()}"] .calendar__time-slot[data-time="${new Date(start).getHours()}"]`
       );
       slotElem.append(eventElem);
     });
