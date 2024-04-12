@@ -24,14 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 const onStorageChange = (e) => {
   if (e.key === 'events') {
     renderTimescale();
-    setItem('displayedWeekStart', getStartOfWeek(new Date()));
-    renderWeek();
-    renderHeader();
-    initNavigation()
-    initEventForm();
     timeLine();
     renderEvents();
   }
-  
-window.addEventListener('storage', onStorageChange)
-}
+};
+
+window.addEventListener('storage', onStorageChange);
