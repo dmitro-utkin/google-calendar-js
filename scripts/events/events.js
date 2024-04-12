@@ -71,8 +71,10 @@ export const renderEvents = () => {
   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
   // не забудьте удалить с календаря старые события перед добавлением новых
   removeEventsFromCalendar();
-  const events = getItem('events') || [];
-  const startDateTime = getItem('displayedWeekStart');
+  // const events = getItem('events') || [];
+  // const startDateTime = getItem('displayedWeekStart');
+  const events = JSON.parse(localStorage.getItem('events')) || [];
+  const startDateTime = JSON.parse(localStorage.getItem('displayedWeekStart'));
   const endDateTime = shmoment(startDateTime).add('days', 7).result();
   events
     .filter(event => {
