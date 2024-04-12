@@ -48,7 +48,7 @@ function onCreateEvent(event) {
 
 export function initEventForm() {
   // подпишитесь на сабмит формы и на закрытие формы
-    // отримуємо форму
+  // отримуємо форму
   eventFormElem.addEventListener("submit", onCreateEvent);
   closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }

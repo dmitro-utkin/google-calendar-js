@@ -1,20 +1,26 @@
-export const storage = {
+// export const storage = {
 
-  // используется для удаления события
-  eventIdToDelete: null,
-  // хранит дату понедельника той отображаемой недели
-  displayedWeekStart: null,
-  // хранит массив всех событий
-  events: [],
-  // это все данные, которые вам нужно хранить для работы приложения
-};
-// console.log(storage)
-export const setItem = (key, value) => {
-  // ф-ция должна устанавливать значения в объект storage
-  Object.assign(storage, { [key]: value });
-};
+export const setItem = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+// -//   // используется для удаления события
+// -//   eventIdToDelete: null,
+// -//   // хранит дату понедельника той отображаемой недели
+// -//   displayedWeekStart: null,
+// -//   // хранит массив всех событий
+// -//   events: [],
+// -//   // это все данные, которые вам нужно хранить для работы приложения
+// -// };
+// -// console.log(storage)
+// -export const setItem = (key, value) => {
+//   -  // ф-ция должна устанавливать значения в объект storage
+//   -  // Object.assign(storage, { [key]: value });
+//   -  localStorage.setItem(key, JSON.stringify(value));
+//   -};
 
-export const getItem = (key) => storage[key];
+
+
+// export const getItem = (key) => storage[key];
+
+export const getItem = (key) => JSON.parse(localStorage.getItem(key));
   // ф-ция должна возвращать по ключу значения из объекта storage
 
 
