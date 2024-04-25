@@ -1,4 +1,4 @@
-import { getItem, setItem } from '../common/storage.js';
+import { getItem, setItem, getEventsList, createEvent, updateEvent, serverUrl, deleteEvent } from '../common/storage.js';
 import shmoment from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
 
@@ -60,18 +60,32 @@ const createEventElement = (event) => {
   return eventElem;
 };
 
-export const renderEvents = () => {
-  // достаем из storage все события и дату понедельника отображаемой недели
-  // фильтруем события, оставляем только те, что входят в текущую неделю
-  // создаем для них DOM элементы с помощью createEventElement
-  // для каждого события находим на странице временную ячейку (.calendar__time-slot)
-  // и вставляем туда событие
-  // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
-  // не забудьте удалить с календаря старые события перед добавлением новых
+// export const renderEvents = () => {
+//   // достаем из storage все события и дату понедельника отображаемой недели
+//   // фильтруем события, оставляем только те, что входят в текущую неделю
+//   // создаем для них DOM элементы с помощью createEventElement
+//   // для каждого события находим на странице временную ячейку (.calendar__time-slot)
+//   // и вставляем туда событие
+//   // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
+//   // не забудьте удалить с календаря старые события перед добавлением новых
+//   removeEventsFromCalendar();
+//   const events = getItem('events') || [];
+//   events
+//     .forEach(event => {
+//       const { start } = event;
+//       const startDate = new Date(start);
+//       const eventElem = createEventElement(event);
+//       const slotElem = document.querySelector(
+//         `.calendar__day[data-day="${startDate.getDate()}"] .calendar__time-slot[data-time="${startDate.getHours()}"]`
+//       );
+//       slotElem.append(eventElem);
+//     });
+// };
+
+export const renderEvents = async () => {
   removeEventsFromCalendar();
-  const events = getItem('events') || [];
-  events
-    .forEach(event => {
+    const events = await getEventsList(serverUrl); // Fetch events from the server
+    events.forEach(event => {
       const { start } = event;
       const startDate = new Date(start);
       const eventElem = createEventElement(event);
@@ -82,17 +96,33 @@ export const renderEvents = () => {
     });
 };
 
-function onDeleteEvent() {
-  const events = getItem('events');
-  const eventIdToDelete = getItem('eventIdToDelete');
-  const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
+// function onDeleteEvent() {
+//   const events = getItem('events');
+//   const eventIdToDelete = getItem('eventIdToDelete');
+//   const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
 
-  events.splice(index, 1);
+//   events.splice(index, 1);
   
-  setItem('events', events);
-  setItem('eventIdToDelete', null);
-  closePopup();
-  renderEvents();
+//   setItem('events', events);
+//   setItem('eventIdToDelete', null);
+//   closePopup();
+//   renderEvents();
+// }
+
+function onDeleteEvent() {
+  const eventIdToDelete = getItem('eventIdToDelete');
+
+  deleteEvent(eventIdToDelete)
+    .then(() => {
+      const events = getItem('events');
+      const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
+      events.splice(index, 1);
+
+      setItem('events', events);
+      setItem('eventIdToDelete', null);
+      closePopup();
+      renderEvents();
+    })
 }
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
