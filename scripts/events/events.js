@@ -1,65 +1,81 @@
-import { getItem, setItem, getEventsList,  updateEvent, serverUrl, deleteEvent } from '../common/storage.js';
-import shmoment from '../common/shmoment.js';
-import { openPopup, closePopup } from '../common/popup.js';
-import { openModal, closeModal } from '../common/modal.js';
+import {
+  getItem,
+  setItem,
+  getEventsList,
+  updateEvent,
+  serverUrl,
+  deleteEvent,
+} from "../common/storage.js";
+import shmoment from "../common/shmoment.js";
+import { openPopup, closePopup } from "../common/popup.js";
+import { openModal, closeModal } from "../common/modal.js";
 
-const weekElem = document.querySelector('.calendar__week');
-const deleteEventBtn = document.querySelector('.delete-event-btn');
-export const editEventBtn = document.querySelector('.edit-event-btn');
+const weekElem = document.querySelector(".calendar__week");
+const deleteEventBtn = document.querySelector(".delete-event-btn");
+export const editEventBtn = document.querySelector(".edit-event-btn");
 
-const handleEventClick = (event) => { const target = event.target.closest('.event');
+const handleEventClick = (event) => {
+  const target = event.target.closest(".event");
   if (!target) {
     return;
   }
   openPopup(event.clientX, event.clientY);
-  setItem('eventIdToDelete', target.dataset.eventId);
+  setItem("eventIdToDelete", target.dataset.eventId);
 };
 
 function removeEventsFromCalendar() {
-  const eventsElems = document.querySelectorAll('.event');
+  const eventsElems = document.querySelectorAll(".event");
   if (eventsElems) {
-    eventsElems.forEach(eventElem => eventElem.remove());
+    eventsElems.forEach((eventElem) => eventElem.remove());
   }
 }
 
 const createEventElement = (event) => {
-  const { start, end, title, id, description  } = event;
+  const { start, end, title, id, description } = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
+  const formatTime = (date) => {
+    return date.toString().padStart(2, "0");
+  };
+  const startHours = formatTime(startDate.getHours());
+  const startMinutes = formatTime(startDate.getMinutes());
+  const endHours = formatTime(endDate.getHours());
+  const endMinutes = formatTime(endDate.getMinutes());
 
-  const eventElem = document.createElement('div');
+  const eventTimeContent = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
+
+  const eventElem = document.createElement("div");
   eventElem.dataset.eventId = id;
-  eventElem.style.top = startDate.getMinutes() + 'px';
+  eventElem.style.top = startDate.getMinutes() + "px";
   let eventHeight = end - start;
   eventHeight /= 60000;
 
   eventHeight = Math.max(eventHeight, 100);
-  eventElem.style.height = eventHeight.toFixed() + 'px';
-  eventElem.classList.add('event');
+  eventElem.style.height = eventHeight.toFixed() + "px";
+  eventElem.classList.add("event");
 
-  const eventTitleElem = document.createElement('div');
+  const eventTitleElem = document.createElement("div");
   eventTitleElem.textContent = title;
-  eventTitleElem.classList.add('event__title');
+  eventTitleElem.classList.add("event__title");
 
-  const eventTimeElem = document.createElement('div');
-  eventTimeElem.textContent = `${startDate.getHours()}:${startDate.getMinutes()} - ${endDate.getHours()}:${endDate.getMinutes()}`;
-  eventTimeElem.classList.add('event__time');
-  
-  const eventDescriptionElem = document.createElement('div');
+  const eventTimeElem = document.createElement("div");
+  eventTimeElem.textContent = eventTimeContent;
+  eventTimeElem.classList.add("event__time");
+
+  const eventDescriptionElem = document.createElement("div");
   eventDescriptionElem.textContent = description;
-  eventDescriptionElem.classList.add('event__description');
-  
+  eventDescriptionElem.classList.add("event__description");
+
   eventElem.append(eventTitleElem, eventTimeElem, eventDescriptionElem);
   return eventElem;
 };
-
 
 export const renderEvents = async () => {
   removeEventsFromCalendar();
 
   const events = await getEventsList(serverUrl); // Fetch events from the server
 
-  events.forEach(event => {
+  events.forEach((event) => {
     const { start } = event;
     const startDate = new Date(start);
     const eventElem = createEventElement(event);
@@ -68,20 +84,28 @@ export const renderEvents = async () => {
     );
 
     slotElem.append(eventElem);
-  });  
+  });
 };
 
 function fillForm(event) {
   const { title, description, start, end, date } = event;
 
   const titleInput = document.querySelector('input[name="title"]');
-  const descriptionInput = document.querySelector('textarea[name="description"]');
+  const descriptionInput = document.querySelector(
+    'textarea[name="description"]'
+  );
   const dateInput = document.querySelector('input[name="date"]');
   const startTimeInput = document.querySelector('input[name="startTime"]');
   const endTimeInput = document.querySelector('input[name="endTime"]');
 
-  const startTime = new Date(start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const endTime = new Date(end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const startTime = new Date(start).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const endTime = new Date(end).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   titleInput.value = title;
   descriptionInput.value = description;
@@ -90,9 +114,8 @@ function fillForm(event) {
   endTimeInput.value = endTime;
 }
 
-
 async function onEventUpdate() {
-  const eventIdToUpdate = getItem('eventIdToDelete');
+  const eventIdToUpdate = getItem("eventIdToDelete");
 
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`);
   const event = await response.json();
@@ -100,49 +123,48 @@ async function onEventUpdate() {
   openModal();
   fillForm(event);
 
-  const form = document.querySelector('.event-form');
-  form.addEventListener('submit', async (event) => {
+  const form = document.querySelector(".event-form");
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const response = await updateEvent(serverUrl, eventIdToUpdate);
 
     if (response.ok) {
-      await onDeleteEvent();
+      onDeleteEvent();
       await renderEvents();
       closeModal();
     } else {
-      console.error('Failed to update event:', response.statusText);
+      console.error("Failed to update event:", response.statusText);
     }
   });
 }
 
-
 function onDeleteEvent() {
-  const eventIdToDelete = getItem('eventIdToDelete');
+  const eventIdToDelete = getItem("eventIdToDelete");
 
-  deleteEvent(eventIdToDelete)
-    .then(() => {
-      const events = getItem('events');
-      const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
-      events.splice(index, 1);
+  deleteEvent(eventIdToDelete).then(() => {
+    const events = getItem("events");
+    const index = events.findIndex(
+      (event) => String(event.id) === String(eventIdToDelete)
+    );
+    events.splice(index, 1);
 
-      setItem('events', events);
-      setItem('eventIdToDelete', null);
-      closePopup();
-      renderEvents();
-    })
+    setItem("events", events);
+    setItem("eventIdToDelete", null);
+    closePopup();
+    renderEvents();
+  });
 }
 
-deleteEventBtn.addEventListener('click', onDeleteEvent);
+deleteEventBtn.addEventListener("click", onDeleteEvent);
 
-weekElem.addEventListener('click', handleEventClick);
+weekElem.addEventListener("click", handleEventClick);
 
-editEventBtn.addEventListener('click', () => {
+editEventBtn.addEventListener("click", () => {
   onEventUpdate();
-  document.querySelector('.event-form__submit-btn').textContent = 'Edit';
+  document.querySelector(".event-form__submit-btn").textContent = "Edit";
 });
 
-
 // ---------------------------------------
 // ---------------------------------------
 // ---------------------------------------
@@ -170,13 +192,6 @@ editEventBtn.addEventListener('click', () => {
 // ---------------------------------------
 // ---------------------------------------
 // ---------------------------------------
-
-
-
-
-
-
-
 
 // import { getItem, setItem, getEventsList, createEvent, updateEvent, serverUrl, deleteEvent } from '../common/storage.js';
 // import shmoment from '../common/shmoment.js';
@@ -231,11 +246,11 @@ editEventBtn.addEventListener('click', () => {
 //   const eventTimeElem = document.createElement('div');
 //   eventTimeElem.textContent = `${startDate.getHours()}:${startDate.getMinutes()} - ${endDate.getHours()}:${endDate.getMinutes()}`;
 //   eventTimeElem.classList.add('event__time');
-  
+
 //   const eventDescriptionElem = document.createElement('div');
 //   eventDescriptionElem.textContent = description;
 //   eventDescriptionElem.classList.add('event__description');
-  
+
 //   eventElem.append(eventTitleElem, eventTimeElem, eventDescriptionElem);
 //   return eventElem;
 // };
@@ -282,7 +297,7 @@ editEventBtn.addEventListener('click', () => {
 // //   const index = events.findIndex(event => String(event.id) === String(eventIdToDelete));
 
 // //   events.splice(index, 1);
-  
+
 // //   setItem('events', events);
 // //   setItem('eventIdToDelete', null);
 // //   closePopup();
