@@ -12,7 +12,7 @@ import { openModal, closeModal } from "../common/modal.js";
 
 const weekElem = document.querySelector(".calendar__week");
 const deleteEventBtn = document.querySelector(".delete-event");
-export const editEventBtn = document.querySelector(".edit-event");
+const editEventBtn = document.querySelector(".edit-event");
 
 const handleEventClick = (event) => {
   const target = event.target.closest(".event");
@@ -124,8 +124,7 @@ async function onEventUpdate() {
 
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`);
   const event = await response.json();
-  
-  closePopup()
+  closePopup();
   openModal();
   fillForm(event);
 

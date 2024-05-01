@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation()
   initEventForm();
   timeLine();
-  // renderEvents();
+  renderEvents();
 });
 
 const onStorageChange = (e) => {
