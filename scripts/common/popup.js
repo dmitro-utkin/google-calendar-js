@@ -17,4 +17,4 @@ function onClickInsidePopup(event) {
 
 popupContentElem.addEventListener('click', onClickInsidePopup);
 popupContentElem.addEventListener('click', openPopup);
-popupContentElem.addEventListener('click', closePopup);
+popupElem.addEventListener('click', closePopup);
