@@ -44,15 +44,11 @@ const createEventElement = (event) => {
 
   const eventTimeContent = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
 
-  const eventElem = document.createElement("div");
+  const eventElem = document.createElement('div');
   eventElem.dataset.eventId = id;
-  eventElem.style.top = startDate.getMinutes() + "px";
-  let eventHeight = end - start;
-  eventHeight /= 60000;
-
-  eventHeight = Math.max(eventHeight, 100);
-  eventElem.style.height = eventHeight.toFixed() + "px";
-  eventElem.classList.add("event");
+  eventElem.style.top = startDate.getMinutes() + 'px';
+  eventElem.style.height = ((endDate - startDate) / 60000).toFixed() + 'px';
+  eventElem.classList.add('event');
 
   const eventTitleElem = document.createElement("div");
   eventTitleElem.textContent = title;
@@ -72,18 +68,27 @@ const createEventElement = (event) => {
 
 export const renderEvents = async () => {
   removeEventsFromCalendar();
-
   const events = await getEventsList(serverUrl); // Fetch events from the server
-
-  events.forEach((event) => {
+  const eventsByDateAndTime = events.reduce((events, event) => {
     const { start } = event;
     const startDate = new Date(start);
-    const eventElem = createEventElement(event);
-    const slotElem = document.querySelector(
-      `.calendar__day[data-day="${startDate.getDate()}"] .calendar__time-slot[data-time="${startDate.getHours()}"]`
-    );
+    const day = startDate.getDate();
+    const time = startDate.getHours();
+    events[`${day}-${time}`] = events[`${day}-${time}`] || [];
+    events[`${day}-${time}`].push(event);
+    return events;
+  }, {});
 
-    slotElem.append(eventElem);
+  const timeSlotsElems = document.querySelectorAll(
+    ".calendar__time-slot"
+  );
+  timeSlotsElems.forEach((timeSlotElem) => {
+    const day = timeSlotElem.closest(".calendar__day").dataset.day;
+    const time = timeSlotElem.dataset.time;
+    const eventsForTimeSlot = eventsByDateAndTime[`${day}-${time}`] || [];
+    eventsForTimeSlot.forEach((event) => {
+      timeSlotElem.append(createEventElement(event));
+    });
   });
 };
 

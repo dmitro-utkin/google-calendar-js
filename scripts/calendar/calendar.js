@@ -32,5 +32,5 @@ export const renderWeek = () => {
     .map(day => `<div class="calendar__day" data-day="${day.getDate()}">${dayTemplateString}</div>`)
     .join('');
   document.querySelector('.calendar__week').innerHTML = weekElementString;
-  renderEvents();
+  // renderEvents();
 };

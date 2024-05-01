@@ -24,14 +24,6 @@ export const createEvent = (event) =>
     body: JSON.stringify(event),
   });
 
-// export const updateEvent = (id, updatedEvent) =>
-// fetch(`${serverUrl}/${id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json;charset=utf-8'
-//     },
-//     body: JSON.stringify(updatedEvent),
-//   });
 export async function updateEvent(serverUrl, eventIdToUpdate) {
   const formData = new FormData(document.querySelector(".event-form"));
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`, {
