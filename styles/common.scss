@@ -5,8 +5,7 @@
   outline: none;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 500;  
-  background-color: #transparent;
+  font-weight: 500;
 }
 
 .icon-button {
@@ -54,16 +53,76 @@
     padding: 16px;
     border-radius: 8px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-  }
 
-  &__icon {
-    width: 20px;
-    height: 20px;
-  }
+    .events-btn {
+      display: flex;
+      align-items: center;
 
-  button {
-    border: none;
-    background-color: #fff;
+      &:hover {
+        opacity: 0.8;
+      }
+
+      button {
+        border: none;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        .fas {
+          font-size: 16px;
+        }
+      }
+
+      .colors__list {
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        list-style: none;
+        padding: 8px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+        .colors__item {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: rgb(0, 153, 255); /* Додайте бажаний колір */
+          margin-right: 10px;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+        }
+        #red {
+          background-color: red;
+        }
+        
+        #green {
+          background-color: green;
+        }
+    
+        #yellow {
+          background-color: yellow;
+        }
+    
+        #blue {
+          background-color: blue;
+        }
+      }
+    }
+
+    .events-btn:nth-child(2):hover .colors__list {
+      display: block;
+    }
   }
 }
 

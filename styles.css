@@ -15,7 +15,6 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  background-color: #transparent;
 }
 
 .icon-button {
@@ -62,13 +61,63 @@
   border-radius: 8px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
-.popup__icon {
+.popup__content .events-btn {
+  display: flex;
+  align-items: center;
+}
+.popup__content .events-btn:hover {
+  opacity: 0.8;
+}
+.popup__content .events-btn button {
+  border: none;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popup__content .events-btn button .fas {
+  font-size: 16px;
+}
+.popup__content .events-btn .colors__list {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  list-style: none;
+  padding: 8px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.popup__content .events-btn .colors__list .colors__item {
+  display: inline-block;
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  background-color: rgb(0, 153, 255); /* Додайте бажаний колір */
+  margin-right: 10px;
+  cursor: pointer;
 }
-.popup button {
-  border: none;
-  background-color: #fff;
+.popup__content .events-btn .colors__list .colors__item:hover {
+  opacity: 0.8;
+}
+.popup__content .events-btn .colors__list #red {
+  background-color: red;
+}
+.popup__content .events-btn .colors__list #green {
+  background-color: green;
+}
+.popup__content .events-btn .colors__list #yellow {
+  background-color: yellow;
+}
+.popup__content .events-btn .colors__list #blue {
+  background-color: blue;
+}
+.popup__content .events-btn:nth-child(2):hover .colors__list {
+  display: block;
 }
 
 .hidden {
@@ -322,7 +371,7 @@
   position: absolute;
   z-index: 10;
   padding: 5px;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3); /* Додано нижню тінь */
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 }
 .event__title {
   text-align: center;

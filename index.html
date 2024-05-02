@@ -130,32 +130,43 @@
         </div>
       </div>
     </div>
+
     <div class="popup hidden overlay">
       <div class="popup__overlay"></div>
       <div class="popup__content">
-        <div class="edit-event">
-          <img
-            class="popup__icon"
-            src="images/edit_pencil.png"
-            alt="delete-icon"
-          />
-          <button class="edit-event-btn">Edit</button>
+        <div class="events-btn">
+          <button class="button events-btn__edit-btn">
+            <i class="fas fa-pen"></i>
+            Edit
+          </button>
         </div>
-        <div class="color-event">
-          <img
-            class="popup__icon"
-            src="images/color-palette_icon.svg"
-            alt="delete-icon"
-          />
-          <button class="edit-event-btn">Color</button>
+        <div class="events-btn">
+          <button class="button events-btn__color-btn">
+            <i class="fas fa-palette"></i>
+            Color</button>
+          <ul class="colors__list">
+            <li
+              class="colors__item" id="default-color"
+            ></li>
+            <li
+              class="colors__item" id="red"
+            ></li>
+            <li
+              class="colors__item" id="green"
+            ></li>
+            <li
+              class="colors__item" id="yellow"
+            ></li>
+            <li
+              class="colors__item" id="blue"
+            ></li>
+          </ul>
         </div>
-        <div class="delete-event">
-          <img
-            class="popup__icon"
-            src="images/delete_bucket.png"
-            alt="delete-icon"
-          />
-          <button class="delete-event-btn">Delete</button>
+        <div class="events-btn">
+          <button class="button events-btn__delete-btn">
+            <i class="fas fa-trash"></i>
+            Delete
+          </button>
         </div>
       </div>
     </div>

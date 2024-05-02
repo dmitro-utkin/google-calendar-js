@@ -11,8 +11,8 @@ import { openPopup, closePopup } from "../common/popup.js";
 import { openModal, closeModal } from "../common/modal.js";
 
 const weekElem = document.querySelector(".calendar__week");
-const deleteEventBtn = document.querySelector(".delete-event");
-const editEventBtn = document.querySelector(".edit-event");
+const deleteEventBtn = document.querySelector(".events-btn__delete-btn");
+const editEventBtn = document.querySelector(".events-btn__edit-btn");
 
 const handleEventClick = (event) => {
   const target = event.target.closest(".event");
