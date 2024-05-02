@@ -1,9 +1,9 @@
 export const serverUrl =
-  "https://662630a1052332d55321f809.mockapi.io/api/v1/events";
+  'https://662630a1052332d55321f809.mockapi.io/api/v1/events';
 export const storage = {
   eventIdToDelete: null,
   displayedWeekStart: null,
-  events: [],
+  events: []
 };
 export const setItem = (key, value) => Object.assign(storage, { [key]: value });
 export const getItem = (key) => storage[key];
@@ -17,26 +17,36 @@ export const getEventsList = () =>
 
 export const createEvent = (event) =>
   fetch(serverUrl, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json;charset=utf-8",
+      'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify(event),
+    body: JSON.stringify(event)
   });
 
 export async function updateEvent(serverUrl, eventIdToUpdate) {
-  const formData = new FormData(document.querySelector(".event-form"));
+  const formData = new FormData(document.querySelector('.event-form'));
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`, {
-    method: "PUT",
-    body: formData,
+    method: 'PUT',
+    body: formData
   });
   return response;
 }
 
 export const deleteEvent = (id) =>
   fetch(`${serverUrl}/${id}`, {
-    method: "DELETE",
+    method: 'DELETE'
   });
+
+export const updateEventColor = (eventId, colorId) => {
+  return fetch(`${baseUrl}/${eventId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ colorId })
+  });
+};
 
 // -----------------------------
 // -----------------------------

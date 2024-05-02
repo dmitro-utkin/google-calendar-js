@@ -6,7 +6,6 @@ import {
   serverUrl,
   deleteEvent,
 } from "../common/storage.js";
-import shmoment from "../common/shmoment.js";
 import { openPopup, closePopup } from "../common/popup.js";
 import { openModal, closeModal } from "../common/modal.js";
 
@@ -31,7 +30,7 @@ function removeEventsFromCalendar() {
 }
 
 const createEventElement = (event) => {
-  const { start, end, title, id, description } = event;
+  const { start, end, title, id, description, colorId} = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
   const formatTime = (date) => {
@@ -49,6 +48,7 @@ const createEventElement = (event) => {
   eventElem.style.top = startDate.getMinutes() + 'px';
   eventElem.style.height = ((endDate - startDate) / 60000).toFixed() + 'px';
   eventElem.classList.add('event');
+  eventElem.style.backgroundColor = colorId;
 
   const eventTitleElem = document.createElement("div");
   eventTitleElem.textContent = title;

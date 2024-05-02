@@ -1,4 +1,4 @@
-import { getItem, setItem, createEvent, updateEvent, getEventsList } from "../common/storage.js";
+import { getItem, setItem, createEvent } from "../common/storage.js";
 import { renderEvents } from "./events.js";
 import { getDateTime } from "../common/time.utils.js";
 import { closeModal } from "../common/modal.js";
@@ -33,6 +33,7 @@ async function onCreateEvent(event) {
     start,
     end,
     date,
+    colorId: 'default-color',
   };
 
   const events = getItem('events') || [];
