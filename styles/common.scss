@@ -71,10 +71,6 @@
         padding: 8px;
         border-radius: 5px;
         cursor: pointer;
-
-        .fas {
-          font-size: 16px;
-        }
       }
 
       .colors__list {
@@ -93,30 +89,32 @@
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background-color: rgb(0, 153, 255); /* Додайте бажаний колір */
           margin-right: 10px;
           cursor: pointer;
 
           &:hover {
             opacity: 0.8;
           }
-
         }
-        #red {
-          background-color: red;
-        }
-        
-        #green {
-          background-color: green;
-        }
-    
-        #yellow {
-          background-color: yellow;
-        }
-    
-        #blue {
-          background-color: blue;
-        }
+      }
+      .default-color {
+        background-color: rgb(0, 153, 255);
+      }
+      
+      .red {
+        background-color: red;
+      }
+      
+      .green {
+        background-color: green;
+      }
+  
+      .yellow {
+        background-color: yellow;
+      }
+  
+      .blue {
+        background-color: blue;
       }
     }
 
