@@ -33,7 +33,6 @@ async function onCreateEvent(event) {
     start,
     end,
     date,
-    colorId: 'default-color',
   };
 
   const events = getItem('events') || [];

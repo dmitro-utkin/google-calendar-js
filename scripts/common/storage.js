@@ -39,7 +39,7 @@ export const deleteEvent = (id) =>
   });
 
 export const updateEventColor = (eventId, colorId) => {
-  return fetch(`${baseUrl}/${eventId}`, {
+  return fetch(`${serverUrl}/${eventId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

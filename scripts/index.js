@@ -7,6 +7,7 @@ import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
 import { timeLine } from './calendar/timeline.js';
 import { renderEvents } from './events/events.js';
+import { handleColorButtonClick } from './events/eventsColor.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation()
   initEventForm();
   timeLine();
+  handleColorButtonClick();
   renderEvents();
 });
 

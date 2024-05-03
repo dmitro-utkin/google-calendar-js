@@ -102,19 +102,20 @@
       }
 
       .red {
-        background: red;
+        background: rgb(255, 0, 0);
       }
       
       .green {
-        background: green;
+        background: rgb(0, 200, 0);
       }
   
       .yellow {
-        background: yellow;
+        background: rgb(255, 238, 1);
+        color: black;
       }
   
       .blue {
-        background: blue;
+        background: rgb(19, 0, 223);
       }
     }
 
