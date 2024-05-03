@@ -5,26 +5,29 @@ import { renderEvents } from './events.js';
 export const handleColorButtonClick = () => {
   const colorButtons = document.querySelectorAll('.colors__item');
 
-  // додаємо обробник помість до кожної кнопки
+  // Add an event listener to each color button
   colorButtons.forEach(button => {
     button.addEventListener('click', event => {
-      // отримуємо колір кнопки
+      // Obtain the color of the button
       const color = getComputedStyle(event.target).backgroundColor;
-
-      // отримуємо id події
+      const textColor = getComputedStyle(event.target).color;
+      // Obtain the event ID
       const eventId = getItem('eventIdToDelete');
 
-      // оновлюємо колір події
-      updateEventColor(+eventId, color)
+      // Update the event color
+      updateEventColor(+eventId, color, textColor)
         .then(() => {
           const eventsToUpdate = document.querySelectorAll(
-            `.event[data-event-id=" ${eventId} "]`
+            `.event[data-event-id="${eventId}"]`
           );
           eventsToUpdate.forEach(eventToUpdate => {
             eventToUpdate.style.backgroundColor = color;
-            
-            // Check if the color is 'yellow' or 'green'
-            eventToUpdate.style.color = selectedColorId === '#ffffff' ? '#000000' : '#ffffff';
+            // Set the text color based on the background color
+            if (color === 'rgb(255, 238, 1)' || color === 'rgb(0, 200, 0)') {
+              eventToUpdate.style.color = '#000000'; // Set text color to black for yellow and green backgrounds
+            } else {
+              eventToUpdate.style.color = '#ffffff'; // Set text color to white for other backgrounds
+            }
           });
           renderEvents();
         })

@@ -106,10 +106,10 @@
   background: rgb(255, 0, 0);
 }
 .popup__content .events-btn .green {
-  background: rgb(0, 200, 0);
+  background: rgb(28, 145, 28);
 }
-.popup__content .events-btn .yellow {
-  background: rgb(255, 238, 1);
+.popup__content .events-btn .orange {
+  background: rgb(240, 148, 0);
   color: black;
 }
 .popup__content .events-btn .blue {
@@ -365,7 +365,6 @@
   width: calc(100% - 10px);
   overflow: auto;
   background-color: rgb(0, 153, 255);
-  color: #fff;
   border-radius: 5px;
   position: absolute;
   z-index: 10;
