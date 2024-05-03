@@ -1,5 +1,6 @@
 import { getItem, updateEventColor } from '../common/storage.js';
 import { renderEvents } from './events.js';
+import { closePopup } from "../common/popup.js";
 
 // Optimization: Cache the event ID and computed styles
 let eventId, color, textColor;
@@ -24,6 +25,7 @@ export const handleColorButtonClick = () => {
           eventToUpdate.style.setProperty('background-color', color);
           eventToUpdate.style.setProperty('color', textColor);
         });
+        closePopup();        
         renderEvents();
       })
       .catch(error => {
