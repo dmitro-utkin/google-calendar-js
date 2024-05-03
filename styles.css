@@ -110,10 +110,9 @@
 }
 .popup__content .events-btn .orange {
   background: rgb(240, 148, 0);
-  color: black;
 }
 .popup__content .events-btn .blue {
-  background: rgb(19, 0, 223);
+  background: rgb(21, 0, 255);
 }
 .popup__content .events-btn:nth-child(2):hover .colors__list {
   display: block;

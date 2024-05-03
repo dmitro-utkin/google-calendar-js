@@ -49,7 +49,7 @@ const createEventElement = (event) => {
   eventElem.style.height = ((endDate - startDate) / 60000).toFixed() + 'px';
   eventElem.classList.add('event');
   eventElem.style.backgroundColor = colorId;
-  eventElem.style.color = '#fff';
+  eventElem.style.color = textColor;
 
   const eventTitleElem = document.createElement("div");
   eventTitleElem.textContent = title;
