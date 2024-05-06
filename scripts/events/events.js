@@ -69,7 +69,7 @@ const createEventElement = (event) => {
 
 export const renderEvents = async () => {
   removeEventsFromCalendar();
-  const events = await getEventsList(serverUrl); // Fetch events from the server
+  const events = await getEventsList(serverUrl);
   const eventsByDateAndTime = events.reduce((events, event) => {
     const { start } = event;
     const startDate = new Date(start);
