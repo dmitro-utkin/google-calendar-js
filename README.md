@@ -6,4 +6,4 @@
 2. install LTS [NodeJS](https://nodejs.org/en/)
 3. run `npm install` to to use eslint in the project
 
-4. https://sd13666.github.io/google-calendar-js - GitHub Page
+4. https://sd13666.github.io/google-calendar-js.github.io/ - GitHub Page
