@@ -1,4 +1,4 @@
-# Project: Google calendar
+### Project: Google calendar
 
 ### [Site link](https://sd13666.github.io/google-calendar-js.github.io/)
 
