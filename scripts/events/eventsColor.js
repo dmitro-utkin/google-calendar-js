@@ -2,8 +2,6 @@ import { getItem, updateEventColor } from '../common/storage.js';
 import { renderEvents } from './events.js';
 import { closePopup } from "../common/popup.js";
 
-// Optimization: Cache the event ID and computed styles
-let eventId, color, textColor;
 export const handleColorButtonClick = () => {
   const colorButtons = document.querySelectorAll('.colors__item');
 

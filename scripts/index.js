@@ -11,7 +11,6 @@ import { handleColorButtonClick } from './events/eventsColor.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // инициализация всех элементов
   renderTimescale();
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   renderWeek();
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initEventForm();
   timeLine();
   handleColorButtonClick();
-  renderEvents();
 });
 
 const onStorageChange = (e) => {

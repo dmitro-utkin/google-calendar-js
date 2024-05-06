@@ -42,5 +42,4 @@ export const timeLine = () => {
   }
 };
 
-// Викликаю функцію timeLine кожну хвилину
 setInterval(timeLine, 60 * 1000);
