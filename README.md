@@ -1,6 +1,6 @@
 ### Project: Google calendar
 
-### [Site link](https://sd13666.github.io/google-calendar-js.github.io/)
+### [Site link](https://sd13666.github.io/google-calendar-js/)
 
 ### The tech stack is:
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
