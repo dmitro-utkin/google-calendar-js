@@ -27,4 +27,8 @@ export const renderHeader = () => {
     document.querySelector('.calendar__header').innerHTML = weekHTML;
 };
 
-document.querySelector('.create-event-btn').addEventListener('click', openModal);
+
+document.querySelector('.create-event-btn').addEventListener('click', () => {
+  openModal();
+  document.querySelector(".event-form__submit-btn").textContent = "Create";
+});

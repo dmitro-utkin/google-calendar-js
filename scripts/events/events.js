@@ -14,6 +14,7 @@ const deleteEventBtn = document.querySelector(".events-btn__delete-btn");
 const editEventBtn = document.querySelector(".events-btn__edit-btn");
 
 const handleEventClick = (event) => {
+  event.preventDefault();
   const target = event.target.closest(".event");
   if (!target) {
     return;
