@@ -74,9 +74,11 @@ export const renderEvents = async () => {
     const { start } = event;
     const startDate = new Date(start);
     const day = startDate.getDate();
+    const month = startDate.getMonth() + 1;
     const time = startDate.getHours();
-    events[`${day}-${time}`] = events[`${day}-${time}`] || [];
-    events[`${day}-${time}`].push(event);
+    const key = `${day}-${month}-${time}`;
+    events[key] = events[key] || [];
+    events[key].push(event);
     return events;
   }, {});
 
@@ -86,7 +88,9 @@ export const renderEvents = async () => {
   timeSlotsElems.forEach((timeSlotElem) => {
     const day = timeSlotElem.closest(".calendar__day").dataset.day;
     const time = timeSlotElem.dataset.time;
-    const eventsForTimeSlot = eventsByDateAndTime[`${day}-${time}`] || [];
+    const month = timeSlotElem.closest(".calendar__day").dataset.month;
+    const key = `${day}-${month}-${time}`;
+    const eventsForTimeSlot = eventsByDateAndTime[key] || [];
     eventsForTimeSlot.forEach((event) => {
       timeSlotElem.append(createEventElement(event));
     });
