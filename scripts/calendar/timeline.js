@@ -67,7 +67,7 @@ export const timeLine = () => {
   const currentHour = currentTime.getHours();
   const currentMinute = currentTime.getMinutes();
   const currentDay = currentTime.getDate();
-  const currentMonth = currentTime.getMonth() + 1; // Отримайте поточний місяць
+  const currentMonth = currentTime.getMonth() + 1;
 
   curTimeEl.dataset.time = currentHour;
   curTimeEl.dataset.day = currentDay;
@@ -79,7 +79,7 @@ export const timeLine = () => {
   timeSlots.forEach((slot, index) => {
     const slotTime = parseInt(slot.dataset.time, 10);
     const slotDay = parseInt(slot.parentElement.dataset.day, 10);
-    const slotMonth = parseInt(slot.parentElement.dataset.month, 10); // Отримайте місяць
+    const slotMonth = parseInt(slot.parentElement.dataset.month, 10);
 
     if (slotTime === currentHour && slotDay === currentDay && slotMonth === currentMonth) {
       selectedIndex = index;

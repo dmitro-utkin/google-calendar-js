@@ -15,17 +15,6 @@ const generateDay = (day) => {
   return hoursOfDay;
 };
 
-// export const renderWeek = () => {  
-//   const startDate = getItem('displayedWeekStart');
-//   const daysList = generateWeekRange(startDate);
-//   const dayTemplateString = generateDay();
-//   const weekElementString = daysList
-//     .map(day => `<div class="calendar__day" data-day="${day.getDate()}">${dayTemplateString}</div>`)
-//     .join('');
-//   document.querySelector('.calendar__week').innerHTML = weekElementString;
-//   renderEvents();
-// };
-
 export const renderWeek = () => {
   const getWeekElem = document.querySelector('.calendar__week');
   const startDate = getItem('displayedWeekStart');
