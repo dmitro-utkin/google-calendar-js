@@ -31,7 +31,7 @@ function removeEventsFromCalendar() {
 }
 
 const createEventElement = (event) => {
-  const { start, end, title, id, description, colorId, textColor} = event;
+  const { start, end, title, id, description, colorId } = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
   const formatTime = (date) => {
@@ -50,7 +50,6 @@ const createEventElement = (event) => {
   eventElem.style.height = ((endDate - startDate) / 60000).toFixed() + 'px';
   eventElem.classList.add('event');
   eventElem.style.backgroundColor = colorId;
-  eventElem.style.color = textColor;
 
   const eventTitleElem = document.createElement("div");
   eventTitleElem.textContent = title;
