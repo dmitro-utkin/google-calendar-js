@@ -1,4 +1,5 @@
-import { getItem, updateEventColor } from '../common/storage.js';
+import { getItem } from '../common/storage.js';
+import { updateEventColor } from '../common/gateways.js';
 import { renderEvents } from './events.js';
 import { closePopup } from "../common/popup.js";
 

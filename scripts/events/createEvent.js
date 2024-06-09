@@ -1,10 +1,11 @@
-import { getItem, setItem, createEvent } from "../common/storage.js";
-import { renderEvents } from "./events.js";
-import { getDateTime } from "../common/time.utils.js";
-import { closeModal } from "../common/modal.js";
+import { getItem, setItem } from '../common/storage.js';
+import { createEvent } from '../common/gateways.js';
+import { renderEvents } from './events.js';
+import { getDateTime } from '../common/time.utils.js';
+import { closeModal } from '../common/modal.js';
 
-export const eventFormElem = document.querySelector(".event-form");
-const closeEventFormBtn = document.querySelector(".create-event__close-btn");
+export const eventFormElem = document.querySelector('.event-form');
+const closeEventFormBtn = document.querySelector('.create-event__close-btn');
 
 function clearEventForm() {
   eventFormElem.reset();
@@ -32,7 +33,7 @@ async function onCreateEvent(event) {
     description,
     start,
     end,
-    date,
+    date
   };
 
   const events = getItem('events') || [];
@@ -51,6 +52,6 @@ async function onCreateEvent(event) {
 }
 
 export function initEventForm() {
-  eventFormElem.addEventListener("submit", onCreateEvent);
-  closeEventFormBtn.addEventListener("click", onCloseEventForm);
+  eventFormElem.addEventListener('submit', onCreateEvent);
+  closeEventFormBtn.addEventListener('click', onCloseEventForm);
 }

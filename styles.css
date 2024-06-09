@@ -61,15 +61,14 @@
   border-radius: 8px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
-
-.events-btn {
+.popup__content .events-btn {
   display: flex;
   align-items: center;
 }
-.events-btn:hover {
+.popup__content .events-btn:hover {
   opacity: 0.8;
 }
-.events-btn button {
+.popup__content .events-btn button {
   border: none;
   background: #fff;
   display: flex;
@@ -79,11 +78,10 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
-.colors__list {
+.popup__content .events-btn .colors__list {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 50px;
   right: 0;
   list-style: none;
   padding: 8px;
@@ -91,7 +89,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.colors__list__item {
+.popup__content .events-btn .colors__list .colors__item {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -99,31 +97,25 @@
   margin-right: 10px;
   cursor: pointer;
 }
-.colors__list__item:hover {
+.popup__content .events-btn .colors__list .colors__item:hover {
   opacity: 0.8;
 }
-
-.default-color {
+.popup__content .events-btn .default-color {
   background: rgb(0, 153, 255);
 }
-
-.red {
+.popup__content .events-btn .red {
   background: rgb(255, 0, 0);
 }
-
-.green {
+.popup__content .events-btn .green {
   background: rgb(28, 145, 28);
 }
-
-.orange {
+.popup__content .events-btn .orange {
   background: rgb(240, 148, 0);
 }
-
-.blue {
+.popup__content .events-btn .blue {
   background: rgb(21, 0, 255);
 }
-
-.events-btn:nth-child(2):hover .colors__list {
+.popup__content .events-btn:nth-child(2):hover .colors__list {
   display: block;
 }
 
