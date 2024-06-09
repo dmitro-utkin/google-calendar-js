@@ -32,9 +32,7 @@ const createEventElement = (event) => {
   const { start, end, title, id, description, colorId } = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
-  const formatTime = (date) => {
-    return date.toString().padStart(2, '0');
-  };
+  const formatTime = (date) => (date + '').padStart(2, '0');
   const startHours = formatTime(startDate.getHours());
   const startMinutes = formatTime(startDate.getMinutes());
   const endHours = formatTime(endDate.getHours());
