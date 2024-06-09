@@ -20,13 +20,3 @@ document.addEventListener('DOMContentLoaded', () => {
   timeLine();
   handleColorButtonClick();
 });
-
-const onStorageChange = (e) => {
-  if (e.key === 'events') {
-    renderTimescale();
-    timeLine();
-    renderEvents();
-  }
-};
-
-window.addEventListener('storage', onStorageChange);

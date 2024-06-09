@@ -54,75 +54,78 @@
     padding: 16px;
     border-radius: 8px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+}
 
-    .events-btn {
-      display: flex;
-      align-items: center;
+.events-btn {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  button {
+    border: none;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.colors {
+  &__list {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    list-style: none;
+    padding: 8px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &__item {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 10px;
+      cursor: pointer;
 
       &:hover {
         opacity: 0.8;
       }
-
-      button {
-        border: none;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .colors__list {
-        display: none;
-        position: absolute;
-        top: 30px;
-        right: 0;
-        list-style: none;
-        padding: 8px;
-        background: #fff;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-        .colors__item {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          margin-right: 10px;
-          cursor: pointer;
-
-          &:hover {
-            opacity: 0.8;
-          }
-        }
-      }
-      .default-color {
-        background: rgb(0, 153, 255);
-      }
-
-      .red {
-        background: rgb(255, 0, 0);
-      }
-      
-      .green {
-        background: rgb(28, 145, 28);
-      }
-  
-      .orange {
-        background: rgb(240, 148, 0);
-      }
-  
-      .blue {
-        background: rgb(21, 0, 255);
-      }
-    }
-
-    .events-btn:nth-child(2):hover .colors__list {
-      display: block;
     }
   }
+}
+
+.default-color {
+  background: rgb(0, 153, 255);
+}
+
+.red {
+  background: rgb(255, 0, 0);
+}
+    
+.green {
+  background: rgb(28, 145, 28);
+}
+
+.orange {
+  background: rgb(240, 148, 0);
+}
+
+.blue {
+  background: rgb(21, 0, 255);
+}
+
+.events-btn:nth-child(2):hover .colors__list {
+  display: block;
 }
 
 .hidden {

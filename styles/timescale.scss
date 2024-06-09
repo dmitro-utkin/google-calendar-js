@@ -1,22 +1,24 @@
-.calendar__week-container {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 8px;
-  margin-top: 120px;
+.calendar {
+  &__week-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8px;
+    margin-top: 120px;
+  }
 
-  .calendar__time-scale {
+  &__time-scale {
     display: flex;
     flex-direction: column;
     padding-top: 8px;
     padding-right: 10px;
   }
+}
 
-  .time-slot {
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: end;
-    font-size: 12px;
-  }
+.time-slot {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
+  font-size: 12px;
 }
