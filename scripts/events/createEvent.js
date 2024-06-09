@@ -7,33 +7,24 @@ import { closeModal } from '../common/modal.js';
 export const eventFormElem = document.querySelector('.event-form');
 const closeEventFormBtn = document.querySelector('.create-event__close-btn');
 
-function clearEventForm() {
-  eventFormElem.reset();
-}
+const clearEventForm = () => eventFormElem.reset();
 
-function onCloseEventForm() {
+const onCloseEventForm = () => {
   closeModal();
   clearEventForm();
 }
-async function onCreateEvent(event) {
+const onCreateEvent = async (event) => {
   event.preventDefault();
+  
   const formData = new FormData(eventFormElem);
-
-  const title = formData.get('title');
-  const description = formData.get('description');
-  const date = formData.get('date');
-  const startTime = formData.get('startTime');
-  const endTime = formData.get('endTime');
-
-  const start = getDateTime(date, startTime);
-  const end = getDateTime(date, endTime);
+  const { title, description, date, startTime, endTime } = Object.fromEntries(formData.entries());
 
   const eventDetails = {
     title,
     description,
-    start,
-    end,
-    date
+    start: getDateTime(date, startTime),
+    end: getDateTime(date, endTime),
+    date,
   };
 
   const events = getItem('events') || [];
@@ -49,9 +40,10 @@ async function onCreateEvent(event) {
 
   onCloseEventForm();
   renderEvents();
-}
+};
 
-export function initEventForm() {
+
+export const initEventForm = () => {
   eventFormElem.addEventListener('submit', onCreateEvent);
   closeEventFormBtn.addEventListener('click', onCloseEventForm);
-}
+};

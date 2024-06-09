@@ -1,7 +1,7 @@
 const modalElem = document.querySelector('.modal');
 const createEventCloseBtn = document.querySelector('.create-event__close-btn');
 
-export function openModal() {
+export const openModal = () => {
   modalElem.style.display = 'flex';
   const currentDate = new Date();
   const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -10,10 +10,10 @@ export function openModal() {
   
   dateInput.value = currentDate.toISOString().slice(0, 10);
   startTimeInput.value = currentTime;
-}
+};
 
-export function closeModal() {
+export const closeModal = () => {
   modalElem.style.display = 'none';
-}
+};
 
 createEventCloseBtn.addEventListener('click', closeModal);

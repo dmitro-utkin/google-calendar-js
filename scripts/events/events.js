@@ -22,12 +22,11 @@ const handleEventClick = (event) => {
   setItem('eventIdToDelete', target.dataset.eventId);
 };
 
-function removeEventsFromCalendar() {
+const removeEventsFromCalendar = () => {
   const eventsElems = document.querySelectorAll('.event');
-  if (eventsElems) {
-    eventsElems.forEach((eventElem) => eventElem.remove());
-  }
-}
+  eventsElems.forEach((eventElem) => eventElem.remove());
+};
+
 
 const createEventElement = (event) => {
   const { start, end, title, id, description, colorId } = event;
@@ -94,9 +93,7 @@ export const renderEvents = async () => {
   });
 };
 
-function fillForm(event) {
-  const { title, description, start, end, date } = event;
-
+const fillForm = ({ title, description, start, end, date }) => {
   const titleInput = document.querySelector('input[name="title"]');
   const descriptionInput = document.querySelector(
     'textarea[name="description"]'
@@ -119,9 +116,9 @@ function fillForm(event) {
   dateInput.value = date;
   startTimeInput.value = startTime;
   endTimeInput.value = endTime;
-}
+};
 
-async function onEventUpdate() {
+const onEventUpdate = async () => {
   const eventIdToUpdate = getItem('eventIdToDelete');
 
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`);
@@ -144,15 +141,16 @@ async function onEventUpdate() {
       console.error('Failed to update event:', response.statusText);
     }
   });
-}
+};
 
-function onDeleteEvent() {
+
+const onDeleteEvent = () => {
   const eventIdToDelete = getItem('eventIdToDelete');
 
   deleteEvent(eventIdToDelete).then(() => {
     const events = getItem('events');
     const index = events.findIndex(
-      (event) => String(event.id) === String(eventIdToDelete)
+      event => String(event.id) === String(eventIdToDelete)
     );
     events.splice(index, 1);
 
@@ -161,7 +159,7 @@ function onDeleteEvent() {
     closePopup();
     renderEvents();
   });
-}
+};
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
 
