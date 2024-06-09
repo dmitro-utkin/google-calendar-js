@@ -1,6 +1,7 @@
 import shmoment from './shmoment.js';
 
-// вернет дату понедельника той недели, в которую входит переданный день
+export const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
 export const getStartOfWeek = (date) => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
@@ -12,7 +13,6 @@ export const getStartOfWeek = (date) => {
   return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
 };
 
-// вернет массив из 7 дней, начиная c переданной даты
 export const generateWeekRange = (startDate) => {
   const result = [];
   for (let i = 0; i < 7; i += 1) {
@@ -22,7 +22,6 @@ export const generateWeekRange = (startDate) => {
   return result;
 };
 
-// вернет объект даты по переданной дате '2000-01-01' и времени '21:00'
 export const getDateTime = (date, time) => {
   const [hours, minutes] = time.split(':');
   const withHours = new Date(new Date(date).setHours(Number(hours)));
@@ -45,7 +44,6 @@ const monthsNames = [
   'Dec',
 ];
 
-// вернет месяц и год для недели, в которой находится переданный день
 export const getDisplayedMonth = (date) => {
   const weekStart = getStartOfWeek(date);
   const weekEnd = shmoment(date).add('days', 6).result();

@@ -1,10 +1,6 @@
 const modalElem = document.querySelector('.modal');
 const createEventCloseBtn = document.querySelector('.create-event__close-btn');
 
-// export function openModal() {
-//   modalElem.style.display = 'flex';
-// }
-
 export function openModal() {
   modalElem.style.display = 'flex';
   const currentDate = new Date();

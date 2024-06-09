@@ -151,10 +151,6 @@
   width: 40px;
   height: 40px;
 }
-.button-image .google-plus {
-  width: 40px;
-  height: 40px;
-}
 
 .navigation {
   display: flex;
@@ -201,7 +197,7 @@
   padding-right: 10px;
   padding-left: 47px;
 }
-.calendar__day-label {
+.calendar .day-label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,11 +205,11 @@
   margin: 20px auto;
   position: relative;
 }
-.calendar__day-label .day-label__day-name {
+.calendar .day-label__day-name {
   position: absolute;
   margin-bottom: 18px;
 }
-.calendar__day-label .day-label__day-number {
+.calendar .day-label__day-number {
   position: absolute;
   top: 40px;
   font-size: 34px;

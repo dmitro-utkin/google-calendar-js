@@ -23,7 +23,7 @@
     padding-left: 47px;
   }
 
-  &__day-label {
+  .day-label {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,12 +31,12 @@
     margin: 20px auto;
     position: relative;
 
-    .day-label__day-name {
+    &__day-name {
       position: absolute;
       margin-bottom: 18px;
     }
 
-    .day-label__day-number {
+    &__day-number {
       position: absolute;
       top: 40px;
       font-size: 34px;
