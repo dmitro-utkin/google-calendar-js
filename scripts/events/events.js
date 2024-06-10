@@ -92,28 +92,21 @@ export const renderEvents = async () => {
 };
 
 const fillForm = ({ title, description, start, end, date }) => {
-  const titleInput = document.querySelector('input[name="title"]');
-  const descriptionInput = document.querySelector(
-    'textarea[name="description"]'
-  );
-  const dateInput = document.querySelector('input[name="date"]');
-  const startTimeInput = document.querySelector('input[name="startTime"]');
-  const endTimeInput = document.querySelector('input[name="endTime"]');
+  const formInputs = document.querySelectorAll('input[name], textarea[name]');
+  const inputs = {
+    title: formInputs[0],
+    description: formInputs[1],
+    date: formInputs[2],
+    startTime: formInputs[3],
+    endTime: formInputs[4]
+  };
 
-  const startTime = new Date(start).toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-  const endTime = new Date(end).toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+  const startTime = new Date(start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const endTime = new Date(end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-  titleInput.value = title;
-  descriptionInput.value = description;
-  dateInput.value = date;
-  startTimeInput.value = startTime;
-  endTimeInput.value = endTime;
+  Object.entries({ title, description, date, startTime, endTime }).forEach(([name, value]) => {
+    inputs[name].value = value;
+  });
 };
 
 const onEventUpdate = async () => {
