@@ -1,5 +1,5 @@
 export const serverUrl =
-  'https://662630a1052332d55321f809.mockapi.io/api/v1/events';
+  'https://6666ad4da2f8516ff7a45a72.mockapi.io/api/v1/events';
 
 export const getEventsList = () =>
   fetch(serverUrl)
