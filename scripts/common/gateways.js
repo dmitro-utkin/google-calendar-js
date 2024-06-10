@@ -24,8 +24,6 @@ export const updateEvent = (serverUrl, eventIdToUpdate, data) => (
   })
 );
 
-
-
 export const deleteEvent = (id) =>
   fetch(`${serverUrl}/${id}`, {
     method: 'DELETE'
