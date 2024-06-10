@@ -1,7 +1,7 @@
 import { getItem, setItem } from "../common/storage.js";
 import { renderWeek } from "../calendar/calendar.js";
 import { renderHeader } from "../calendar/header.js";
-import { getStartOfWeek, getDisplayedMonth } from "../common/time.utils.js";
+import { getStartOfWeek, getDisplayedMonth } from "../common/utils.js";
 import { timeLine } from '../calendar/timeline.js';
 
 

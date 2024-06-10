@@ -1,4 +1,4 @@
-import { getStartOfWeek } from './time.utils.js';
+import { getStartOfWeek } from './utils.js';
 
 export const storage = {
   eventIdToDelete: null,
