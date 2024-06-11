@@ -11,7 +11,7 @@ export const handleColorButtonClick = () => {
     const style = getComputedStyle(event.target);
     const color = style.backgroundColor;
 
-    updateEventColor(+eventId, color || 'rgb(0, 153, 255)')
+    updateEventColor(+eventId, color)
       .then(() => {
         const eventsToUpdate = document.querySelectorAll(
           `.event[data-event-id="${eventId}"]`
