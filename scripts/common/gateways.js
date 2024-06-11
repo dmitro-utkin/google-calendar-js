@@ -24,17 +24,17 @@ export const updateEvent = (serverUrl, eventIdToUpdate, data) => (
   })
 );
 
-export const deleteEvent = (id) =>
-  fetch(`${serverUrl}/${id}`, {
+export const deleteEvent = (eventIdToUpdate) =>
+  fetch(`${serverUrl}/${eventIdToUpdate}`, {
     method: 'DELETE'
   });
 
-export const updateEventColor = (eventId, colorId) => {
-  return fetch(`${serverUrl}/${eventId}`, {
+export const updateEventColor = (eventIdToUpdate, color) => {
+  return fetch(`${serverUrl}/${eventIdToUpdate}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify({ colorId })
+    body: JSON.stringify({ color })
   });
 };

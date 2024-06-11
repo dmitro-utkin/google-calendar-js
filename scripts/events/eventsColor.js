@@ -10,19 +10,14 @@ export const handleColorButtonClick = () => {
     const eventId = getItem('eventIdToDelete');
     const style = getComputedStyle(event.target);
     const color = style.backgroundColor;
-    let textColor = style.color;
-    if (color === 'rgb(21, 0, 255)' || color === 'rgb(255, 0, 0)') {
-      textColor = 'rgb(255, 255, 255)';
-    }
 
-    updateEventColor(+eventId, color, textColor)
+    updateEventColor(+eventId, color || 'rgb(0, 153, 255)')
       .then(() => {
         const eventsToUpdate = document.querySelectorAll(
           `.event[data-event-id="${eventId}"]`
         );
         eventsToUpdate.forEach(eventToUpdate => {
           eventToUpdate.style.setProperty('background-color', color);
-          eventToUpdate.style.setProperty('color', textColor);
         });
         closePopup();        
         renderEvents();

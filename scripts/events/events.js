@@ -29,7 +29,7 @@ const removeEventsFromCalendar = () => {
 
 
 const createEventElement = (event) => {
-  const { start, end, title, id, description, colorId } = event;
+  const { start, end, title, id, description, color } = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
   const formatTime = (date) => (date + '').padStart(2, '0');
@@ -45,7 +45,7 @@ const createEventElement = (event) => {
   eventElem.style.top = startDate.getMinutes() + 'px';
   eventElem.style.height = ((endDate - startDate) / 60000).toFixed() + 'px';
   eventElem.classList.add('event');
-  eventElem.style.backgroundColor = colorId;
+  eventElem.style.backgroundColor = color;
 
   const eventTitleElem = document.createElement('div');
   eventTitleElem.textContent = title;
@@ -134,7 +134,7 @@ const onEventUpdate = async () => {
     const response = await updateEvent(serverUrl, eventIdToUpdate);
 
     if (response.ok) {
-      onDeleteEvent();
+      updateEvent();
       await renderEvents();
       closeModal();
     } else {
