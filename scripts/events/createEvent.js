@@ -25,6 +25,7 @@ const onCreateEvent = async (event) => {
     start: getDateTime(date, startTime),
     end: getDateTime(date, endTime),
     date,
+    color: 'rgb(0, 153, 255)',
   };
 
   const events = getItem('events') || [];
