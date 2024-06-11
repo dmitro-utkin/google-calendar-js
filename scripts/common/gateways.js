@@ -18,7 +18,7 @@ export const updateEvent = (serverUrl, eventIdToUpdate, data) => (
   fetch(`${serverUrl}/${eventIdToUpdate}`, {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(data)
   })
@@ -33,7 +33,7 @@ export const updateEventColor = (eventId, colorId) => {
   return fetch(`${serverUrl}/${eventId}`, {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({ colorId })
   });
