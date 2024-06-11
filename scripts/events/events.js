@@ -135,6 +135,7 @@ const onEventUpdate = async () => {
 
     if (response.ok) {
       updateEvent();
+      onDeleteEvent();
       await renderEvents();
       closeModal();
     } else {
