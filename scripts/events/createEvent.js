@@ -14,10 +14,11 @@ const onCloseEventForm = () => {
   clearEventForm();
 }
 const onCreateEvent = async (event) => {
+  console.log('onCreateEvent called');
   event.preventDefault();
   
   const formData = new FormData(eventFormElem);
-  const { title, description, date, startTime, endTime } = Object.fromEntries(formData.entries());
+  const { title, description, date, startTime, endTime, color } = Object.fromEntries(formData.entries());
 
   const eventDetails = {
     title,
@@ -25,26 +26,31 @@ const onCreateEvent = async (event) => {
     start: getDateTime(date, startTime),
     end: getDateTime(date, endTime),
     date,
-    color: 'rgb(0, 153, 255)',
+    color: color || 'rgb(0, 153, 255)',
   };
+
+  console.log('Event details:', eventDetails);
 
   const events = getItem('events') || [];
 
   const response = await createEvent(eventDetails);
 
   if (response.ok) {
-    events.push(await response.json());
+    const newEvent = await response.json();
+    console.log('New event created:', newEvent);
+    events.push(newEvent);
     setItem('events', events);
   } else {
     console.error('Failed to create event:', response.statusText);
   }
 
   onCloseEventForm();
+  console.log('Rendering events...');
   renderEvents();
 };
 
 
 export const initEventForm = () => {
-  eventFormElem.addEventListener('submit', onCreateEvent);
+  // eventFormElem.addEventListener('submit', onCreateEvent);
   closeEventFormBtn.addEventListener('click', onCloseEventForm);
 };

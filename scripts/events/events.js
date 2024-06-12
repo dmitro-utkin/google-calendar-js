@@ -7,6 +7,7 @@ import {
 } from '../common/gateways.js';
 import { openPopup, closePopup } from '../common/popup.js';
 import { openModal, closeModal } from '../common/modal.js';
+import { getDateTime } from '../common/utils.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.events-btn__delete-btn');
@@ -118,7 +119,7 @@ const fillForm = (event) => {
   endTimeInput.value = endTime;
 };
 
-const onEventUpdate = async () => {
+export const onEventUpdate = async () => {
   const eventIdToUpdate = getItem('eventIdToDelete');
 
   const response = await fetch(`${serverUrl}/${eventIdToUpdate}`);
@@ -131,12 +132,26 @@ const onEventUpdate = async () => {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const response = await updateEvent(serverUrl, eventIdToUpdate);
+    const formData = new FormData(form);
+    const { startTime, endTime, date, ...rest } = Object.fromEntries(formData.entries());
+    console.log(rest);
+
+    const eventDetails = {
+      ... rest,
+      date,
+      start: getDateTime(date, startTime),
+      end: getDateTime(date, endTime),
+    };
+
+    const response = await updateEvent(serverUrl, eventIdToUpdate, eventDetails);
+    console.log('Response from updateEvent:', response);
 
     if (response.ok) {
-      updateEvent();
-      onDeleteEvent();
+      console.log('Event updated successfully');
+      // updateEvent();
+      // onDeleteEvent();
       await renderEvents();
+      console.log('Events rendered');
       closeModal();
     } else {
       console.error('Failed to update event:', response.statusText);

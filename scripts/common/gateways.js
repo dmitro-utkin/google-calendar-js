@@ -14,7 +14,7 @@ export const createEvent = (event) =>
     body: JSON.stringify(event)
   });
 
-export const updateEvent = (serverUrl, eventIdToUpdate, data) => (
+export const updateEvent = ( eventIdToUpdate, data) => (
   fetch(`${serverUrl}/${eventIdToUpdate}`, {
     method: 'PUT',
     headers: {
