@@ -6,6 +6,7 @@ import { closeModal } from '../common/modal.js';
 
 export const eventFormElem = document.querySelector('.event-form');
 const closeEventFormBtn = document.querySelector('.create-event__close-btn');
+const createButton = document.querySelector('.event-form__submit-btn');
 
 const clearEventForm = () => eventFormElem.reset();
 
@@ -51,6 +52,6 @@ const onCreateEvent = async (event) => {
 
 
 export const initEventForm = () => {
-  // eventFormElem.addEventListener('submit', onCreateEvent);
+  createButton.addEventListener('click', onCreateEvent);
   closeEventFormBtn.addEventListener('click', onCloseEventForm);
 };

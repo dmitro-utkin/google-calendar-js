@@ -5,7 +5,7 @@ import { initNavigation } from './header/navigation.js';
 import { initEventForm } from './events/createEvent.js';
 import { timeLine } from './calendar/timeline.js';
 import { handleColorButtonClick } from './events/eventsColor.js';
-
+// import { onDeleteEvent } from './events/deleteEvents.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTimescale();
@@ -15,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initEventForm();
   timeLine();
   handleColorButtonClick();
+  // onDeleteEvent();
 });
