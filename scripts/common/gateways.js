@@ -5,24 +5,24 @@ export const getEventsList = () =>
   fetch(serverUrl)
     .then((res) => res.json())
 
-export const createEvent = (event) =>
-  fetch(serverUrl, {
+export const createEvent = (event) => {
+  return fetch(serverUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(event)
   });
-
-export const updateEvent = ( eventIdToUpdate, data) => (
-  fetch(`${serverUrl}/${eventIdToUpdate}`, {
+}
+export const updateEvent = ( eventIdToUpdate, data) => {
+  return fetch(`${serverUrl}/${eventIdToUpdate}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(data)
   })
-);
+};
 
 export const deleteEvent = (eventIdToUpdate) =>
   fetch(`${serverUrl}/${eventIdToUpdate}`, {

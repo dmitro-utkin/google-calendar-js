@@ -1,10 +1,15 @@
 const modalElem = document.querySelector('.modal');
 const createEventCloseBtn = document.querySelector('.create-event__close-btn');
 
+
 export const openModal = () => {
   modalElem.style.display = 'flex';
   const currentDate = new Date();
-  const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  const currentTime = `${hours}:${minutes}`;
+
   const dateInput = document.querySelector('input[name="date"]');
   const startTimeInput = document.querySelector('input[name="startTime"]');
   

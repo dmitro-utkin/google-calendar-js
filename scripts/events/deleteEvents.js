@@ -23,4 +23,6 @@ export const onDeleteEvent = async () => {
   }
 };
 
-deleteEventBtn.addEventListener('click', onDeleteEvent);
+export const initDeleteEventBtn = () => {
+  deleteEventBtn.addEventListener('click', onDeleteEvent);
+};
