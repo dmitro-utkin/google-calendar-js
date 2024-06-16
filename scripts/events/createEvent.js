@@ -1,5 +1,5 @@
 import { getItem, setItem } from '../common/storage.js';
-import { createEvent } from '../common/gateways.js';
+import { createEvent, updateEvent } from '../common/gateways.js';
 import { renderEvents } from './events.js';
 import { getDateTime } from '../common/utils.js';
 import { closeModal } from '../common/modal.js';
@@ -10,7 +10,7 @@ const createButton = document.querySelector('.event-form__submit-btn');
 
 const clearEventForm = () => eventFormElem.reset();
 
-const onCloseEventForm = () => {
+export const onCloseEventForm = () => {
   closeModal();
   clearEventForm();
 }
@@ -31,22 +31,27 @@ const onCreateEvent = async (event) => {
   };
 
   console.log('Event details:', eventDetails);
+  const action =
+    createButton.textContent === 'Edit'
+      ? updateEvent(+getItem('eventIdToDelete'), eventDetails)
+      : createEvent(eventDetails);
+
+  const response = await action;
 
   const events = getItem('events') || [];
 
-  const response = await createEvent(eventDetails);
-
   if (response.ok) {
+    console.log('Event created successfully');
     const newEvent = await response.json();
-    console.log('New event created:', newEvent);
     events.push(newEvent);
     setItem('events', events);
   } else {
     console.error('Failed to create event:', response.statusText);
   }
-
+  
+  console.log('Closing event form');
   onCloseEventForm();
-  console.log('Rendering events...');
+  console.log('Rendering events');
   renderEvents();
 };
 
