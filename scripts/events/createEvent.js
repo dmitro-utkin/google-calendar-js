@@ -27,10 +27,11 @@ const onCreateEvent = async (event) => {
     start: getDateTime(date, startTime),
     end: getDateTime(date, endTime),
     date,
-    color: color || 'rgb(0, 153, 255)',
+    color: color,
   };
 
   console.log('Event details:', eventDetails);
+
   const action =
     createButton.textContent === 'Edit'
       ? updateEvent(+getItem('eventIdToDelete'), eventDetails)
