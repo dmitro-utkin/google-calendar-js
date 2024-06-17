@@ -61,14 +61,14 @@
   border-radius: 8px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
-.popup__content .events-btn {
+.popup .events-btn {
   display: flex;
   align-items: center;
 }
-.popup__content .events-btn:hover {
+.popup .events-btn:hover {
   opacity: 0.8;
 }
-.popup__content .events-btn .button {
+.popup .events-btn .button {
   border: none;
   background: #fff;
   display: flex;
@@ -78,7 +78,11 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.popup__content .events-btn .colors {
+.popup .events-btn:nth-child(2):hover .colors {
+  display: block;
+}
+
+.colors {
   display: none;
   position: absolute;
   top: 50px;
@@ -89,7 +93,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.popup__content .events-btn .colors .colors__item {
+.colors .colors__item {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -98,26 +102,28 @@
   margin-right: 10px;
   cursor: pointer;
 }
-.popup__content .events-btn .colors .colors__item:hover {
+.colors .colors__item:hover {
   opacity: 0.8;
 }
-.popup__content .events-btn .default-color {
+
+.default-color {
   background: rgb(0, 153, 255);
 }
-.popup__content .events-btn .red {
+
+.red {
   background: rgb(255, 0, 0);
 }
-.popup__content .events-btn .green {
+
+.green {
   background: rgb(28, 145, 28);
 }
-.popup__content .events-btn .orange {
+
+.orange {
   background: rgb(240, 148, 0);
 }
-.popup__content .events-btn .blue {
+
+.blue {
   background: rgb(21, 0, 255);
-}
-.popup__content .events-btn:nth-child(2):hover .colors {
-  display: block;
 }
 
 .hidden {
@@ -363,13 +369,14 @@
 }
 
 .event {
-  flex-direction: column;
+  padding: 5px;
   width: calc(100% - 10px);
-  overflow: auto;
-  border-radius: 5px;
+  flex-direction: column;
   position: absolute;
   z-index: 10;
-  padding: 5px;
+  overflow: auto;
+  background-color: rgb(0, 153, 255);
+  border-radius: 5px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
