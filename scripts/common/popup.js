@@ -15,5 +15,4 @@ export const closePopup = () => {
 const onClickInsidePopup = (event) => event.stopPropagation();
 
 popupContentElem.addEventListener('click', onClickInsidePopup);
-popupContentElem.addEventListener('click', openPopup);
 popupElem.addEventListener('click', closePopup);
