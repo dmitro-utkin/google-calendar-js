@@ -9,7 +9,7 @@
     display: block;
     margin-left: auto;
     border: none;
-    background: #fff;
+    background: rgb(255, 255, 255);
     cursor: pointer;
   }
 
@@ -34,7 +34,7 @@
   }
 
   input[name='title'] {
-    border-bottom: 2px solid dodgerblue;
+    border-bottom: 2px solid rgb(30, 144, 255);
     width: -webkit-fill-available;
     margin-bottom: 50px;
   }
@@ -70,7 +70,7 @@
     display: block;
     margin-left: auto;
     border: none;
-    background-color: dodgerblue;
+    background-color: rgb(30, 144, 255);
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;

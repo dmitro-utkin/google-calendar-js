@@ -10,8 +10,10 @@ const formSubmitBtn = document.querySelector('.event-form__submit-btn');
 const formElem = document.querySelector('.event-form');
 
 const fillEditForm = async () => {
-  const { title, description, start, end, date } = await fetch(`${serverUrl}/${getItem('eventIdToDelete')}`).then((response) => response.json());
-  const setinputValue = (selector, value) => document.querySelector(selector).value = value;
+  const { title, description, start, end, date } = await fetch(
+    `${serverUrl}/${getItem('eventIdToDelete')}`,
+  ).then(response => response.json());
+  const setinputValue = (selector, value) => (document.querySelector(selector).value = value);
   const formatTime = date => date.toTimeString().slice(0, 5);
 
   setinputValue('input[name="title"]', title);
@@ -21,12 +23,16 @@ const fillEditForm = async () => {
   setinputValue('input[name="endTime"]', formatTime(new Date(end)));
 };
 
-const handleUpdate = async (e) => {
+const handleUpdate = async e => {
   e.preventDefault();
 
   const formData = Object.fromEntries(new FormData(formElem).entries());
   const { startTime, endTime, date, ...rest } = formData;
-  const eventDetails = { ...rest, start: getDateTime(date, startTime), end: getDateTime(date, endTime) };
+  const eventDetails = {
+    ...rest,
+    start: getDateTime(date, startTime),
+    end: getDateTime(date, endTime),
+  };
   const response = await updateEvent(getItem('eventIdToDelete'), eventDetails);
 
   if (response.ok) {
@@ -45,112 +51,7 @@ export const initEditEvent = () => {
     formSubmitBtn.textContent = 'Edit';
     formSubmitBtn.addEventListener('click', handleUpdate, { once: true });
   });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 // import { getItem } from '../common/storage.js';
 // import { serverUrl } from '../common/gateways.js';

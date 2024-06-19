@@ -9,7 +9,7 @@
 .button {
   height: 45px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   outline: none;
   cursor: pointer;
   font-size: 16px;
@@ -31,9 +31,9 @@
   align-items: center;
 }
 .modal__content {
-  background: #fff;
+  background: rgb(255, 255, 255);
   padding: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   border-radius: 8px;
   box-shadow: 0px 20px 60px 20px rgba(0, 0, 0, 0.3);
 }
@@ -44,7 +44,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(204, 204, 204, 0.2705882353);
+  background-color: rgba(204, 204, 204, 0.27);
   z-index: 21;
 }
 
@@ -56,7 +56,7 @@
   align-items: center;
   gap: 20px;
   position: absolute;
-  background: #fff;
+  background: rgb(255, 255, 255);
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
@@ -70,7 +70,7 @@
 }
 .popup .events-btn .button {
   border: none;
-  background: #fff;
+  background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -89,7 +89,7 @@
   right: 0;
   list-style: none;
   padding: 8px;
-  background: #fff;
+  background: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -137,15 +137,15 @@
   position: fixed;
   width: 100%;
   z-index: 21;
-  background: #ffffff;
+  background: rgb(255, 255, 255);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .create-event-btn {
-  background-color: #ffffff;
-  border-color: #a89e9e;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(168, 158, 158);
   border-radius: 50px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2509803922);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   gap: 20px;
@@ -199,7 +199,7 @@
   top: 60px;
   width: 100%;
   height: 140px;
-  background: white;
+  background: rgb(255, 255, 255);
   z-index: 19;
   padding-right: 10px;
   padding-left: 47px;
@@ -214,7 +214,7 @@
   width: 100%;
 }
 .calendar__time-slot {
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   height: 61px;
   border-right: none;
   border-top: none;
@@ -224,10 +224,10 @@
   background-color: rgb(208, 229, 248);
 }
 .calendar__time-slot:first-child {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid rgb(204, 204, 204);
 }
 .calendar:last-child {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid rgb(204, 204, 204);
 }
 
 .day-label {
@@ -274,13 +274,13 @@
   height: 5px;
   border: none;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
 }
 .time-line__rectangle {
   height: 0.5px;
   width: calc(14.2857142857vw - 15px);
   border: none;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
 }
 
 .calendar__week-container {
@@ -316,7 +316,7 @@
   display: block;
   margin-left: auto;
   border: none;
-  background: #fff;
+  background: rgb(255, 255, 255);
   cursor: pointer;
 }
 .create-event__clock-icon {
@@ -337,7 +337,7 @@
   border: none;
 }
 .event-form input[name=title] {
-  border-bottom: 2px solid dodgerblue;
+  border-bottom: 2px solid rgb(30, 144, 255);
   width: -webkit-fill-available;
   margin-bottom: 50px;
 }
@@ -366,7 +366,7 @@
   display: block;
   margin-left: auto;
   border: none;
-  background-color: dodgerblue;
+  background-color: rgb(30, 144, 255);
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -404,7 +404,7 @@
   top: 5px;
   right: 5px;
   border: none;
-  background: #fff;
+  background: rgb(255, 255, 255);
   cursor: pointer;
   outline: none;
   width: 15px;

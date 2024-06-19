@@ -1,7 +1,7 @@
 .button {
   height: 45px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(204, 204, 204, 1);
   outline: none;
   cursor: pointer;
   font-size: 16px;
@@ -23,9 +23,9 @@
   align-items: center;
 
   &__content {
-    background: #fff;
+    background: rgba(255, 255, 255);
     padding: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(204, 204, 204, 1);
     border-radius: 8px;
     box-shadow: 0px 20px 60px 20px rgba(0, 0, 0, 0.3);
   }
@@ -37,7 +37,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: rgba(204, 204, 204, 0.27);
   z-index: 21;
 }
 
@@ -50,7 +50,7 @@
     align-items: center;
     gap: 20px;
     position: absolute;
-    background: #fff;
+    background: rgba(255, 255, 255, 1);
     padding: 16px;
     border-radius: 8px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
@@ -65,7 +65,7 @@
 
     .button {
       border: none;
-      background: #fff;
+      background: rgba(255, 255, 255, 1);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -87,7 +87,7 @@
   right: 0;
   list-style: none;
   padding: 8px;
-  background: #fff;
+  background: rgba(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
