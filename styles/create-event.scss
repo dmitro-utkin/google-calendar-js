@@ -1,79 +1,78 @@
 .modal__content {
   width: 440px;
+}
 
-  .create-event {
-    position: relative;
+.create-event {
+  position: relative;
 
-    &__close-btn {
-      display: block;
-      margin-left: auto;
-      border: none;
-      background: #fff;
-      cursor: pointer;
+  &__close-btn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  &__clock-icon {
+    position: absolute;
+    top: 102px;
+  }
+
+  &__description-icon {
+    position: absolute;
+    top: 175px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.event-form {
+  padding-left: 40px;
+
+  &__field {
+    border: none;
+  }
+
+  input[name='title'] {
+    border-bottom: 2px solid dodgerblue;
+    width: -webkit-fill-available;
+    margin-bottom: 50px;
+  }
+
+  &__time {
+    margin-bottom: 50px;
+
+    input[type='time'] {
+      margin-left: 10px;
     }
 
-    &__clock-icon {
-      position: absolute;
-      top: 102px;
+    input[type='time']::-webkit-calendar-picker-indicator {
+      display: none;
     }
 
-    &__description-icon {
-      position: absolute;
-      top: 175px;
-      width: 20px;
-      height: 20px;
+    input[type='time']::-webkit-datetime-edit-fields-wrapper,
+    input[type='time']::-webkit-datetime-edit-text {
+      color: transparent;
     }
 
-    .event-form {
-      padding-left: 40px;
-
-      &__field {
-        border: none;
-      }
-
-      input[name='title'] {
-        border-bottom: 2px solid dodgerblue;
-        width: -webkit-fill-available;
-        margin-bottom: 50px;
-      }
-
-      &__time {
-        margin-bottom: 50px;
-
-        input[type='time'] {
-          margin-left: 10px;
-        }
-
-        input[type='time']::-webkit-calendar-picker-indicator {
-          display: none;
-        }
-
-        input[type='time']::-webkit-datetime-edit-fields-wrapper,
-        input[type='time']::-webkit-datetime-edit-text {
-          color: transparent;
-        }
-
-        input[type='time']::-webkit-datetime-edit-hour-field,
-        input[type='time']::-webkit-datetime-edit-minute-field {
-          color: black;
-          
-        }
-      }
-
-      textarea {
-        margin-bottom: 70px;
-        width: -webkit-fill-available;
-      }
-
-      &__submit-btn {
-        display: block;
-        margin-left: auto;
-        border: none;
-        background-color: dodgerblue;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
+    input[type='time']::-webkit-datetime-edit-hour-field,
+    input[type='time']::-webkit-datetime-edit-minute-field {
+      color: black;
     }
+  }
+
+  textarea {
+    margin-bottom: 70px;
+    width: -webkit-fill-available;
+  }
+
+  &__submit-btn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    background-color: dodgerblue;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
   }
 }

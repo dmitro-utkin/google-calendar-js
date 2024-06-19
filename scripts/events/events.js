@@ -1,7 +1,6 @@
 import { setItem } from '../common/storage.js';
 import { getEventsList, serverUrl } from '../common/gateways.js';
 import { openPopup } from '../common/popup.js';
-// import { initEventForm } from './createEvent.js';
 import { initDeleteEventBtn } from './deleteEvents.js';
 import { initEditEvent } from './updateEvent.js';
 import { handleColorButtonClick } from './eventsColor.js';
@@ -89,7 +88,6 @@ export const renderEvents = async () => {
 weekElem.addEventListener('click', handleEventClick);
 
 export const initEventActions = () => {
-//   initEventForm();
   initDeleteEventBtn();
   initEditEvent();
   handleColorButtonClick();

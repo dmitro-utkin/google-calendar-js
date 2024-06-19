@@ -4,8 +4,6 @@ import { renderHeader } from "../calendar/header.js";
 import { getStartOfWeek, getDisplayedMonth } from "../common/utils.js";
 import { timeLine } from '../calendar/timeline.js';
 
-
-
 const navElem = document.querySelector(".navigation");
 const displayedMonthElem = document.querySelector(".navigation__displayed-month");
 
@@ -39,4 +37,3 @@ export const initNavigation = () => {
   renderCurrentMonth();
   navElem.addEventListener("click", onChangeWeek);
 };
-navElem.addEventListener('click', onChangeWeek);
