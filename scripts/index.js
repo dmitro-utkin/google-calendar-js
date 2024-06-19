@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimescale();
   renderWeek();
   renderHeader();
-  initNavigation()
+  initNavigation();
   timeLine();
   initEventActions();
 });

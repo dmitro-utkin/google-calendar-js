@@ -2,7 +2,7 @@ import shmoment from './shmoment.js';
 
 export const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-export const getStartOfWeek = (date) => {
+export const getStartOfWeek = date => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
   const difference =
@@ -13,7 +13,7 @@ export const getStartOfWeek = (date) => {
   return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
 };
 
-export const generateWeekRange = (startDate) => {
+export const generateWeekRange = startDate => {
   const result = [];
   for (let i = 0; i < 7; i += 1) {
     const base = new Date(startDate);
@@ -44,7 +44,7 @@ const monthsNames = [
   'Dec',
 ];
 
-export const getDisplayedMonth = (date) => {
+export const getDisplayedMonth = date => {
   const weekStart = getStartOfWeek(date);
   const weekEnd = shmoment(date).add('days', 6).result();
   const startMonth = weekStart.getMonth();
@@ -63,9 +63,8 @@ export const getDisplayedMonth = (date) => {
 
 export const createNumbersArray = (from, to) => {
   let numbersArray = [];
-  for(let i = from; i <= to; i++) {
-      numbersArray.push(i);
+  for (let i = from; i <= to; i++) {
+    numbersArray.push(i);
   }
   return numbersArray;
 };
-

@@ -1,7 +1,6 @@
-import { getItem } from "../common/storage.js";
-import { generateWeekRange, createNumbersArray } from "../common/utils.js";
-import { renderEvents } from "../events/events.js";
-
+import { getItem } from '../common/storage.js';
+import { generateWeekRange, createNumbersArray } from '../common/utils.js';
+import { renderEvents } from '../events/events.js';
 
 export const renderWeek = () => {
   const getWeekElem = document.querySelector('.calendar__week');

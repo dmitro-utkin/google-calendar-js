@@ -11,9 +11,7 @@ export const onDeleteEvent = async () => {
   try {
     await deleteEvent(eventIdToDelete);
     const events = getItem('events');
-    const filteredEvents = events.filter(
-      (event) => String(event.id) !== String(eventIdToDelete)
-    );
+    const filteredEvents = events.filter(event => String(event.id) !== String(eventIdToDelete));
     setItem('events', filteredEvents);
     setItem('eventIdToDelete', null);
     closePopup();

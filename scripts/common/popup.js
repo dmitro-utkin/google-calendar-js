@@ -11,8 +11,7 @@ export const closePopup = () => {
   popupElem.classList.add('hidden');
 };
 
-
-const onClickInsidePopup = (event) => event.stopPropagation();
+const onClickInsidePopup = event => event.stopPropagation();
 
 popupContentElem.addEventListener('click', onClickInsidePopup);
 popupElem.addEventListener('click', closePopup);

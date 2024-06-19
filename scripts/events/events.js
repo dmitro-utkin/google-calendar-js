@@ -7,7 +7,7 @@ import { handleColorButtonClick } from './eventsColor.js';
 
 const weekElem = document.querySelector('.calendar__week');
 
-const handleEventClick = (event) => {
+const handleEventClick = event => {
   event.preventDefault();
   const target = event.target.closest('.event');
   if (!target) {
@@ -19,14 +19,14 @@ const handleEventClick = (event) => {
 
 const removeEventsFromCalendar = () => {
   const eventsElems = document.querySelectorAll('.event');
-  eventsElems.forEach((eventElem) => eventElem.remove());
+  eventsElems.forEach(eventElem => eventElem.remove());
 };
 
-const createEventElement = (event) => {
+const createEventElement = event => {
   const { start, end, title, id, description, color } = event;
   const startDate = new Date(start);
   const endDate = new Date(end);
-  const formatTime = (date) => (date + '').padStart(2, '0');
+  const formatTime = date => (date + '').padStart(2, '0');
   const startHours = formatTime(startDate.getHours());
   const startMinutes = formatTime(startDate.getMinutes());
   const endHours = formatTime(endDate.getHours());
@@ -73,13 +73,13 @@ export const renderEvents = async () => {
   }, {});
 
   const timeSlotsElems = document.querySelectorAll('.calendar__time-slot');
-  timeSlotsElems.forEach((timeSlotElem) => {
+  timeSlotsElems.forEach(timeSlotElem => {
     const day = timeSlotElem.closest('.calendar__day').dataset.day;
     const time = timeSlotElem.dataset.time;
     const month = timeSlotElem.closest('.calendar__day').dataset.month;
     const key = `${day}-${month}-${time}`;
     const eventsForTimeSlot = eventsByDateAndTime[key] || [];
-    eventsForTimeSlot.forEach((event) => {
+    eventsForTimeSlot.forEach(event => {
       timeSlotElem.append(createEventElement(event));
     });
   });

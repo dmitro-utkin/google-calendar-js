@@ -18,15 +18,13 @@ const setMethodsNames = {
   milliseconds: 'setMilliseconds',
 };
 
-const shmoment = (date) => {
+const shmoment = date => {
   let result = new Date(date);
 
   const calculator = {
     add(units, value) {
       const currentUnitValue = result[getMethodsNames[units]]();
-      result = new Date(
-        result[setMethodsNames[units]](currentUnitValue + value)
-      );
+      result = new Date(result[setMethodsNames[units]](currentUnitValue + value));
       return this;
     },
     subtract(units, value) {
