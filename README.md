@@ -1,6 +1,6 @@
 ### Project: Google calendar
 
-### [Site link](https://dmitro-utkin.github.io/google-calendar-js/)
+### [Site link](https://dmitro-utkin.github.io/gromcode_google-calendar-js/)
 
 ### The tech stack is:
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
